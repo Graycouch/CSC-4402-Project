@@ -14,13 +14,9 @@ Frontend Developers:
 Backend Developers: 
 
 <br /><br />
+  
+<h1 align="center">Project Abstract</h1>
 
-<p align="center">
-  
-Project Abstract:
-  
-  <br />
-  
-  Hello World!
-  
-</p>
+<br />
+
+Hello World!
