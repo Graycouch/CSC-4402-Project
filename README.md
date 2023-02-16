@@ -1,18 +1,26 @@
 # Arrogant Goats Project Abstract
 Abdel Rahman Mansour, Adam Elkhanoufi, Gabriel Medina, George Adler Buras, John Hudnall, Katherine Perez, and Kendall Comeaux
 
-<br /><br />
+<br />
 
 Team Leader: 
 
-<br /><br />
+<br />
 
 Frontend Developers: 
 
-<br /><br />
+<br />
 
 Backend Developers: 
 
 <br /><br />
 
+<p align="center">
+  
 Project Abstract:
+  
+  <br />
+  
+  Hello World!
+  
+</p>
