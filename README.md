@@ -7,16 +7,15 @@ Hello World!
 <br /><br />
 
 <h1 align="center">Team Roles</h1>
-Abdel Rahman Mansour, Adam Elkhanoufi, Gabriel Medina, George Adler Buras, John Hudnall, Katherine Perez, and Kendall Comeaux
 
 <br />
 
-Team Leader: 
+Team Leader: Katherine Perez
 
 <br />
 
-Frontend Developers: 
+Frontend Developers: Adam Elkhanoufi, Gabriel Medina, and Kendall Comeaux
 
 <br />
 
-Backend Developers: 
+Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
