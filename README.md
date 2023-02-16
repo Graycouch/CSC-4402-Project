@@ -1,5 +1,18 @@
-# CSC-4402-Project Abstract
+# Arrogant Goats Project Abstract
+Abdel Rahman Mansour, Adam Elkhanoufi, Gabriel Medina, George Adler Buras, John Hudnall, Katherine Perez, and Kendall Comeaux
 
-Team Name: Arrogant Goats<br /><br />
-Team Members: Abdel Rahman Mansour, Adam Elkhanoufi, Gabriel Medina, George Adler Buras, John Hudnall, Katherine Perez, and Kendall Comeaux<br /><br />
-Project Abstract:<br />
+<br /><br />
+
+Team Leader: 
+
+<br /><br />
+
+Frontend Developers: 
+
+<br /><br />
+
+Backend Developers: 
+
+<br /><br />
+
+Project Abstract:
