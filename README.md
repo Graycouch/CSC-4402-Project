@@ -24,5 +24,4 @@ Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
 
 <h1 align="center">Technologies</h1>
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
-![react](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&&logoColor=white)
+![github-mark-white](https://user-images.githubusercontent.com/65471490/219511612-8f4a4874-fec2-46ad-a2ae-dc688500995a.png)
