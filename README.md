@@ -1,12 +1,12 @@
-<h1 align="center">Project Abstract</h1>
+<h1 align="center">Voter Registration Project Abstract</h1>
 
 <br />
 
-Our project aims to 
+The goal of our project is to create an improved voter registration DBMS that will help simplify and streamline the voting process for everyone. While the current voter registration DBMS is efficient and gets the job done, it lacks many features which would increase the usability of the system such as providing meaningful information about election candidates and the policies that they support. Our newly proposed voter registration DBMS will allow citizens to easily sign themselves up to vote, view all potential candidates as well as their stances on controversial topics, favorite candidates they would like to view again later, and keep track of ongoing elections. Our group’s motivation for choosing this project is to build on and expand the capabilities of modern-day voter registration database management systems because of their significance and the large scale impact that voting as a whole has on our daily lives.
 
 <br /><br />
 
-<h2 align="center">Arrogant Goats Team Roles</h1>
+<h1 align="center">Arrogant Goats Team Roles</h1>
 
 <br />
 
@@ -22,7 +22,7 @@ Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
 
 <br /><br />
 
-<h2 align="center">Technologies</h1>
+<h1 align="center">Technologies</h1>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/65471490/219519776-879c778e-186a-4f60-9786-ee8e40ea0040.png" width="167" height="150">
