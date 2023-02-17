@@ -2,8 +2,10 @@
 
 <br />
 
-The goal of our project is to create an improved voter registration DBMS that will help simplify and streamline the voting process for everyone. While the current voter registration DBMS is efficient and gets the job done, it lacks many features which would increase the usability of the system such as providing meaningful information about election candidates and the policies that they support. Our newly proposed voter registration DBMS will allow citizens to easily sign themselves up to vote, view all potential candidates as well as their stances on controversial topics, favorite candidates they would like to view again later, and keep track of ongoing elections. Our group’s motivation for choosing this project is to build on and expand the capabilities of modern-day voter registration database management systems because of their significance and the large scale impact that voting as a whole has on our daily lives.
-
+<p align="left">
+  &nbsp;The goal of our project is to create an improved voter registration DBMS that will help simplify and streamline the voting process for everyone. While modern-   day voter registration database management systems are efficient and get the job done, they lack many features which would increase the usability of these systems     such as providing meaningful information about election candidates and the policies that they support. Our newly proposed voter registration DBMS will allow           citizens to easily sign themselves up to vote, view all potential candidates as well as their stances on controversial topics, favorite candidates they would like     to view again later, and keep track of ongoing elections. Our group’s motivation for choosing this project is to build on and expand the capabilities of modern-day     voter registration database management systems because of their significance and the large scale impact that voting as a whole has on our daily lives.
+</p>
+  
 <br /><br />
 
 <h1 align="center">Arrogant Goats Team Roles</h1>
