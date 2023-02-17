@@ -2,11 +2,11 @@
 
 <br />
 
-Hello World!
+Our project aims to 
 
 <br /><br />
 
-<h1 align="center">Team Roles</h1>
+<h2 align="center">Arrogant Goats Team Roles</h1>
 
 <br />
 
@@ -22,7 +22,7 @@ Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
 
 <br /><br />
 
-<h1 align="center">Technologies</h1>
+<h2 align="center">Technologies</h1>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/65471490/219519776-879c778e-186a-4f60-9786-ee8e40ea0040.png" width="167" height="150">
