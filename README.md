@@ -30,6 +30,6 @@ Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
   &nbsp;
   <img src="https://user-images.githubusercontent.com/65471490/219519776-879c778e-186a-4f60-9786-ee8e40ea0040.png" width="167" height="150">
   <img src="https://user-images.githubusercontent.com/65471490/219512690-7bceb9de-c84b-47a2-b1fa-2ec8f78412c9.png" width="240" height="150">
-  <br /><br />
+  <br /><br /><br /><br /><br /><br />
   <img src="https://user-images.githubusercontent.com/103407697/219883420-27129a01-344a-4de2-a827-db704ab9f1d1.png" width="354" height="70">
 </p>
