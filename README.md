@@ -14,15 +14,15 @@ We plan to build a database that consists of six major tables that will help des
 
 <br />
 
-<ins>**Team Leader**</ins>: Katherine Perez
+<ins>**Team Leader:**</ins> Katherine Perez
 
 <br />
 
-<ins>**Frontend Developers**</ins>: Adam Elkhanoufi, Gabriel Medina, and Kendall Comeaux
+<ins>**Frontend Developers:**</ins> Adam Elkhanoufi, Gabriel Medina, and Kendall Comeaux
 
 <br />
 
-<ins>**Backend Developers**</ins>: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
+<ins>**Backend Developers:**</ins> Abdel Rahman Mansour, George Adler Buras, and John Hudnall
 
 <br /><br />
 
