@@ -1,4 +1,4 @@
-<h1 align="center">Voter Registration Project Abstract</h1>
+<h1 align="center"><ins>**Voter Registration Project Abstract**</ins></h1>
 
 <br />
 
@@ -10,23 +10,23 @@ We plan to build a database that consists of six major tables that will help des
   
 <br />
 
-<h1 align="center">Arrogant Goats Team Roles</h1>
+<h1 align="center"><ins>**Arrogant Goats Team Roles**</ins></h1>
 
 <br />
 
-Team Leader: Katherine Perez
+<ins>**Team Leader**</ins>: Katherine Perez
 
 <br />
 
-Frontend Developers: Adam Elkhanoufi, Gabriel Medina, and Kendall Comeaux
+<ins>**Frontend Developers**</ins>: Adam Elkhanoufi, Gabriel Medina, and Kendall Comeaux
 
 <br />
 
-Backend Developers: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
+<ins>**Backend Developers**</ins>: Abdel Rahman Mansour, George Adler Buras, and John Hudnall
 
 <br /><br />
 
-<h1 align="center">Technologies</h1>
+<h1 align="center"><ins>**Technologies**</ins></h1>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/65471490/219513432-924c9cf4-a67f-40bc-9b51-04a1fe1713dc.png" width="240" height="150">
