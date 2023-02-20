@@ -1,4 +1,4 @@
-<h1 align="center"><ins>Voter Registration Project Abstract</ins></h1>
+<h1 align="center">Voter Registration Project Abstract</h1>
 
 <br />
 
@@ -10,7 +10,7 @@ We plan to build a database that consists of six major tables that will help des
   
 <br />
 
-<h1 align="center"><ins>Arrogant Goats Team Roles</ins></h1>
+<h1 align="center">Arrogant Goats Team Roles</h1>
 
 <br />
 
@@ -26,7 +26,7 @@ We plan to build a database that consists of six major tables that will help des
 
 <br /><br />
 
-<h1 align="center"><ins>Technologies</ins></h1>
+<h1 align="center">Technologies</h1>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/65471490/219513432-924c9cf4-a67f-40bc-9b51-04a1fe1713dc.png" width="240" height="150">
