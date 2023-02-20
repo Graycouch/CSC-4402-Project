@@ -1,6 +1,6 @@
 <h1 align="center">Voter Registration Project Abstract</h1>
 
-<br /><br />
+<br />
 
 The goal of our project is to create an improved voter registration DBMS that will help simplify and streamline the voting process for everyone. While modern-day voter registration database management systems are efficient and get the job done, they lack many features which would increase the usability of these systems such as providing meaningful information about election candidates and the policies that they support. Our newly proposed voter registration DBMS will allow citizens to easily sign themselves up to vote, view all potential candidates as well as their stances on controversial topics, favorite candidates they would like to view again later, and keep track of ongoing elections. Our group’s motivation for choosing this project is to expand and build on the capabilities of modern-day voter registration database management systems because of their significance and the large scale impact that voting as a whole has on our daily lives.
 
@@ -8,7 +8,7 @@ The goal of our project is to create an improved voter registration DBMS that wi
 
 We plan to build a database that consists of six major tables that will help describe and show all the necessary relations required for an effective voter registration DBMS. The six tables being: <ins>**a voter table**</ins> (voter ID, first name, last name, SSN, birthday, email, phone, party ID, favorites, district, and state), <ins>**a candidate table**</ins> (candidate ID, first name, last name, SSN, birthday, email, phone, party ID, district, state, current office, opinion, and next election ID), <ins>**an election table**</ins> (election ID, office, date, and ballot), <ins>**a ballot table**</ins> (election ID, candidates, and votes), <ins>**an opinion table**</ins> (candidate ID, abortion, guns, immigration, lgbt, environment, etc.), and <ins>**a party table**</ins> (party ID, party name, and members).
   
-<br /><br />
+<br />
 
 <h1 align="center">Arrogant Goats Team Roles</h1>
 
