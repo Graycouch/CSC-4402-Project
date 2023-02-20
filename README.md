@@ -5,7 +5,7 @@ The goal of our project is to create an improved voter registration DBMS that wi
 
 <br /><br />
 
-We plan to build a database that consists of six major tables that will help describe and show all the necessary relations required for an effective voter registration DBMS. The six tables being: a <ins>**voter table**</ins> (voter ID, first name, last name, SSN, birthday, email, phone, party ID, favorites, district, and state), a <ins>**candidate table**</ins> (candidate ID, first name, last name, SSN, birthday, email, phone, party ID, district, state, current office, opinion, and next election ID), an <ins>**election table**</ins> (election ID, office, date, and ballot), a <ins>**ballot table**</ins> (election ID, candidates, and votes), an <ins>**opinion table**</ins> (candidate ID, abortion, guns, immigration, lgbt, environment, etc.), and a <ins>**party table**</ins> (party ID, party name, and members).
+We plan to build a database that consists of six major tables that will help describe and show all the necessary relations required for an effective voter registration DBMS. The six tables being: <ins>**a voter table**</ins> (voter ID, first name, last name, SSN, birthday, email, phone, party ID, favorites, district, and state), <ins>**a candidate table**</ins> (candidate ID, first name, last name, SSN, birthday, email, phone, party ID, district, state, current office, opinion, and next election ID), <ins>**an election table**</ins> (election ID, office, date, and ballot), <ins>**a ballot table**</ins> (election ID, candidates, and votes), <ins>**an opinion table**</ins> (candidate ID, abortion, guns, immigration, lgbt, environment, etc.), and <ins>**a party table**</ins> (party ID, party name, and members).
   
 <br /><br />
 
