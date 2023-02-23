@@ -34,4 +34,6 @@ We plan to build a database that consists of six major tables that will help des
   &nbsp;
   <img src="https://user-images.githubusercontent.com/65471490/219519776-879c778e-186a-4f60-9786-ee8e40ea0040.png" width="167" height="150">
   <img src="https://user-images.githubusercontent.com/65471490/219512690-7bceb9de-c84b-47a2-b1fa-2ec8f78412c9.png" width="240" height="150">
+  <br></br>
+  <img src="https://user-images.githubusercontent.com/103407697/220855537-2f005080-964e-4c31-b451-b84f37c85a38.png" width="340" height="70">
 </p>
