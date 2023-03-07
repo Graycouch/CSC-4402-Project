@@ -1,9 +1,16 @@
 const express = require("express");
-const mysql = require("mysql");
 const app = express();
 
-app.listen(8800,
+const voterRoute = require("./Routes/voter");
+const candidateRoute = require("./Routes/candidate");
+const electionRoute = require("./Routes/election");
+
+app.use("/voter", voterRoute);
+app.use("/candidate", candidateRoute);
+app.use("/election", electionRoute);
+
+app.listen(8080,
     () => {
-        console.log("Backend Server is up and running!");
+        console.log("Backend server is up and running!");
     }
 );
