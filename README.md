@@ -37,3 +37,30 @@ We plan to build a database that consists of six major tables that will help des
   <br></br>
   <img src="https://user-images.githubusercontent.com/103407697/220855537-2f005080-964e-4c31-b451-b84f37c85a38.png" width="340" height="70">
 </p>
+
+
+<br />
+
+<h1 align="center">Launch Project</h1>
+
+<br />
+
+1) You have to download node.js, so that you can launch the projects and use a command called npm: you can find the download link here: https://nodejs.org/en/download/
+
+2) You then download visual studio code and on the left bar there's this tab called extensions, download npm from there, you can find visual studio code here: https://code.visualstudio.com/download
+
+3) Then either by directly downloading the code or using github desktop, you pull the repository onto your computer
+
+4) Once you have visual studio code and npm downloaded, you then want to open the project folder in vs code
+
+5) You should now have all the code available on visual studio code, you then want to open the sql-relational-databse folder which has the sql query that you need to populate the initial database, you just copy paste that into MySQL and run it
+
+6) Before we actually launch the app, we have to initialize the code to interface with your local MySQL databse, open the "node-rest-api" folder then open the "src" folder, within "src" there should be a file called "database-connection.js", the only thing you need to change in that file is on line 7 put the password for your MySQL, you might have to do that every time you pull from GitHub because we'll probably overwrite each other's changes
+
+7) You then want to open two terminals within vs code, just right click on the node-rest-api folder and click on "Open in integrated terminal" and do the same thing for the react-website-design folder
+
+8) Starting with the node-rest-api terminal, you want to type in "npm install" which will download all the required dependencies for the project which are specified in the package.json and package-lock.json, then type in "npm start" which should start the server for you on port 8080
+
+9) Then for the react-website-design terminal, you want to also type in "npm install" and "npm start", but for this one the react app will launch in your browser on port 3000
+
+10) Everything should be set up now and you should be able to start coding and see the changes in real time
