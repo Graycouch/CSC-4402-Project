@@ -72,6 +72,7 @@ INSERT INTO candidate VALUES ('835', 'Brice', 'Samuel', '724-25-2346', '08/30/19
 
 -- SELECT * FROM candidate;
 
+
 CREATE TABLE election(
 ID VARCHAR(20) NOT NULL,
 office VARCHAR(30), -- Office to be won in the election (e.g. President)
