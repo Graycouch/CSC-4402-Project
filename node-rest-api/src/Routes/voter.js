@@ -5,6 +5,8 @@ router.get("/", async (req, res) => {
     let query = "SELECT * FROM voter ORDER BY ID";
 
     database.query(query, function (error, data) {
+        res.header("Access-Control-Allow-Origin", "*");
+
         if (error) {
             res.status(500).send("An error occurred executing this query!");
         } else {
@@ -20,6 +22,8 @@ router.get("/get/:id", async (req, res) => {
         let query = `SELECT * FROM voter WHERE ID = ${req.params.id}`;
 
         database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+            
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {
@@ -29,6 +33,24 @@ router.get("/get/:id", async (req, res) => {
     }
 });
 
+router.post("/create", async (req, res) => {
+    if(req.body.ID !== undefined && req.body.party_ID !== undefined){
+        let query = `INSERT INTO voter VALUES (${req.body.ID}, null, null, null, null, null, null, ${req.body.party_ID}, null, null)`;
+
+        database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+            
+            if (error) {
+                res.status(500).send("An error occurred executing this query!");
+            } else {
+                res.status(200).json(data);
+            }
+        })
+    } else {
+        res.status(500).send("You need to provide a voter ID and party ID to create a voter!");
+    }
+})
+
 router.delete("/delete/:id", async (req, res) => {
     if (!req.params.id) {
         res.status(400).send("You need to provide an ID for the voter you want to delete!");
@@ -36,6 +58,8 @@ router.delete("/delete/:id", async (req, res) => {
         let query = `DELETE FROM voter WHERE ID = ${req.params.id}`;
 
         database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {

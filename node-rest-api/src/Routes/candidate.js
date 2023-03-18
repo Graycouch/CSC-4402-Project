@@ -5,6 +5,8 @@ router.get("/", async (req, res) => {
     let query = "SELECT * FROM candidate ORDER BY ID";
 
     database.query(query, function (error, data) {
+        res.header("Access-Control-Allow-Origin", "*");
+
         if (error) {
             res.status(500).send("An error occurred executing this query!");
         } else {
@@ -20,6 +22,8 @@ router.get("/get/:id", async (req, res) => {
         let query = `SELECT * FROM candidate WHERE ID = ${req.params.id}`;
 
         database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {
@@ -36,6 +40,8 @@ router.delete("/delete/:id", async (req, res) => {
         let query = `DELETE FROM candidate WHERE ID = ${req.params.id}`;
 
         database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+            
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {

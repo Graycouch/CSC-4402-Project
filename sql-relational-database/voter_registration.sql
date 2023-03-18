@@ -33,7 +33,7 @@ PRIMARY KEY (ID),
 FOREIGN KEY (party_ID) REFERENCES party(ID)
 );
 
-INSERT INTO voter VALUES ('891977906', 'Abdel Rahman', 'Mansour', '123-45-6789', '09/14/2002', 'amans11@lsu.edu', '504-493-1415', null, 1, 'Louisiana');
+INSERT INTO voter VALUES ('891977906', 'Abdel Rahman', 'Mansour', '123-45-6789', '09/14/2002', 'amans11@lsu.edu', '504-493-1415', 99, 1, 'Louisiana');
 INSERT INTO voter VALUES ('12345', 'George', 'Buras', '987-65-4321', '03/13/2000', 'gburas4@lsu.edu', '111-222-3333', 9, 14, 'Louisiana');
 INSERT INTO voter VALUES ('087687', 'Peter', 'Parker', '624-65-5342', '06/27/1984', 'pete@gmail.edu', '274-234-5134', 5, 13, 'New York');
 INSERT INTO voter VALUES ('2642113', 'Peter', 'Pan', '134-34-6433', '05/14/1984', 'pan@gmail.edu', '34t-24-6344', 3, 5, 'Louisiana');
