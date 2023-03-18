@@ -5,9 +5,9 @@ import {
   Link
 } from "react-router-dom";
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
-import Voters from '../Voters/Voters';
-import Candidates from '../Candidates/Candidates';
-import Elections from '../Elections/Elections';
+import Voters from '../../pages/VotersPage/Voters';
+import Candidates from '../../pages/CandidatesPage/Candidates';
+import Elections from '../../pages/ElectionsPage/Elections';
 
 
 function NavbarComponent() {
