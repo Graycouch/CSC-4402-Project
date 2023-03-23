@@ -23,7 +23,7 @@ router.get("/get/:id", async (req, res) => {
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
-            
+
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {
@@ -34,12 +34,13 @@ router.get("/get/:id", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-    if(req.body.ID !== undefined && req.body.party_ID !== undefined){
-        let query = `INSERT INTO voter VALUES (${req.body.ID}, null, null, null, null, null, null, ${req.body.party_ID}, null, null)`;
+    if (req.body.ID !== undefined && req.body.first_name !== undefined && req.body.last_name !== undefined &&
+        req.body.SSN !== undefined && req.body.DOB !== undefined && req.body.district_number !== undefined && req.body.state !== undefined) {
+        let query = `INSERT INTO voter VALUES (${req.body.ID}, "${req.body.first_name}", "${req.body.last_name}", "${req.body.SSN}", "${req.body.DOB}", null, null, null, "${req.body.district_number}", "${req.body.state}")`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
-            
+
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {

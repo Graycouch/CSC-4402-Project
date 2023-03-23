@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-export default class Voters extends Component {
+export default class Favorites extends Component {
     render() {
         return (
             <div>
                 <h1 style={{ textAlign: 'center' }}>
-                    Voters
+                    Favorites
                 </h1>
             </div>
         )
