@@ -15,6 +15,7 @@
 
 .LoginLeft {
     flex: 1;
+    padding-right: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
