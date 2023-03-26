@@ -1,4 +1,4 @@
-/* .candidate-cards {
+.candidate-cards {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,4 +8,4 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 3px #a8a8a8;
-} */
+}
