@@ -19,21 +19,25 @@ function Candidates() {
     });
     
     // Global variables for maintaining candidate data and to render cards
-    const [candidates, setCandidates] = useState([]);
+    const [candidateData, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
     
     /* Don't know how to properly use database functions */
     async function getCandidates() {
         try {
-            const response = await axios.get('http://localhost:8080/candidate');
-            console.log(response);
-            setCandidates(response.data);
+            const res = await axios.get('http://localhost:8080/candidate');
+            console.log(res.data);
+            setCandidates(res.data);
+
         }
         catch (error) {
             console.log(error);
         }
     }
 
+    useEffect(() => {
+        getCandidates();
+    }, []);
     /* Hard-coded candidate data */
     // const candidates = [
     //     {first_name: "Ashley", last_name: "Jakobs", party_ID: "Green", image: './Images/Ashley-Jakobs.png', state: 'NY', DOB: '44', current_job: 'Lawyer'},
@@ -49,23 +53,20 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards() {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{textAlign: "center"}}>
-                {candidates.map((candidate) => {
-                    return (
-                        <Grid item md={3}>
-                            <CandidateCard candidateData={candidate} />
-                        </Grid>
-                    );
-                })}
-            </Grid>
+          <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{ textAlign: "center" }}>
+            {candidateData.map((candidate) => (
+              <Grid item xs={12} sm={6} md={4}>
+                <CandidateCard candidateData={candidate} />
+              </Grid>
+            ))}
+          </Grid>
         );
     }
 
     //Ensures cards are not lost after page refresh
     useEffect(() => {
-        getCandidates();
         setCards(showCandidateCards());
-    }, []);
+    }, [candidateData]);
     
     return (
         <ThemeProvider theme={theme}>

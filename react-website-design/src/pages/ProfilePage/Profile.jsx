@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Voters.css'
+// import './Voters.css'
 
 
 export default class Voters extends Component {
