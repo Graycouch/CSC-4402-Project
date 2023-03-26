@@ -4,11 +4,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
-import Voters from '../Voters/Voters';
-import Candidates from '../Candidates/Candidates';
-import Elections from '../Elections/Elections';
-
+import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import Profile from '../../pages/ProfilePage/Profile';
+import Candidates from '../../pages/CandidatesPage/Candidates';
+import Elections from '../../pages/ElectionsPage/Elections';
+import Favorites from '../../pages/FavoritesPage/Favorites';
 
 function NavbarComponent() {
   return (
@@ -18,7 +18,7 @@ function NavbarComponent() {
           {['xxl'].map((expand) => (
             <Navbar key={expand} bg="dark" variant="dark" expand={expand} className="mb-3">
               <Container fluid>
-                <Navbar.Brand href="/">Voter Registration</Navbar.Brand>
+                <Navbar.Brand as={Link} to={"/"}>Voter Registration</Navbar.Brand>
                 <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                 <Navbar.Offcanvas
                   id={`offcanvasNavbar-expand-${expand}`}
@@ -31,39 +31,20 @@ function NavbarComponent() {
                     <Nav className="justify-content-end flex-grow-1 pe-3">
 
                       <Nav.Link as={Link} to={"/"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
-                        Voters
+                        Elections
                       </Nav.Link>
 
                       <Nav.Link as={Link} to={"/candidates"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Candidates
                       </Nav.Link>
 
-                      <Nav.Link as={Link} to={"/elections"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
-                        Elections
+                      <Nav.Link as={Link} to={"/favorites"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                        Favorites
                       </Nav.Link>
 
-                      <NavDropdown
-                        title="More"
-                        id={`offcanvasNavbarDropdown-expand-${expand}`}
-                        style={{ paddingLeft: "20px", paddingRight: "20px" }}
-                      >
-                        <NavDropdown.Item as={Link} to={"/"}>
-                          Team
-                        </NavDropdown.Item>
-
-                        <NavDropdown.Divider />
-
-                        <NavDropdown.Item as={Link} to={"/"}>
-                          Arrogant
-                        </NavDropdown.Item>
-
-                        <NavDropdown.Divider />
-
-                        <NavDropdown.Item as={Link} to={"/"}>
-                          Goats
-                        </NavDropdown.Item>
-
-                      </NavDropdown>
+                      <Nav.Link as={Link} to={"/profile"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                        Profile
+                      </Nav.Link>
 
                       <Form className="d-flex" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         <Form.Control
@@ -85,9 +66,10 @@ function NavbarComponent() {
 
         <div>
           <Routes>
-            <Route path="/" element={<Voters />} />
+          <Route path="/" element={<Elections />} />
             <Route path="/candidates" element={<Candidates />} />
-            <Route path="/elections" element={<Elections />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </Router>

@@ -7,7 +7,7 @@ export default class Voters extends Component {
         return (
             <div>
                 <h1 style={{ textAlign: 'center' }}>
-                    Voters
+                    Profile
                 </h1>
             </div>
         )
