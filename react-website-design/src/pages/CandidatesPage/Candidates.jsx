@@ -17,17 +17,17 @@ function Candidates() {
             fontFamily: 'Playfair Display',
         },
     });
-    
+
     // Global variables for maintaining candidate data and to render cards
     const [candidates, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
-    
+
     /* Don't know how to properly use database functions */
     async function getCandidates() {
         try {
             const response = await axios.get('http://localhost:8080/candidate');
             console.log(response);
-            setCandidates(response.data);
+            setCandidates(response.data[0]);
         }
         catch (error) {
             console.log(error);
@@ -49,7 +49,7 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards() {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{textAlign: "center"}}>
+            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{ textAlign: "center" }}>
                 {candidates.map((candidate) => {
                     return (
                         <Grid item md={3}>
@@ -66,16 +66,16 @@ function Candidates() {
         getCandidates();
         setCards(showCandidateCards());
     }, []);
-    
+
     return (
         <ThemeProvider theme={theme}>
-        <div>
-            <h1 style={{ textAlign: 'center' }}>Candidates</h1>
-        </div>
-        <br></br>
-        <div>
-            {cards}
-        </div>
+            <div>
+                <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+            </div>
+            <br></br>
+            <div>
+                {cards}
+            </div>
         </ThemeProvider>
     );
 }
