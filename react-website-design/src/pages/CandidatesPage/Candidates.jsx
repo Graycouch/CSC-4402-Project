@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
 import CandidateCard from './CandidateCard.js';
-import axios from 'axios'
-import './Candidates.css'
-
+import axios from 'axios';
+import './Candidates.css';
 
 function Candidates() {
     // Creates theme for Material UI components
@@ -26,7 +25,7 @@ function Candidates() {
     async function getCandidates() {
         try {
             const res = await axios.get('http://localhost:8080/candidate');
-            console.log(res.data);
+            // console.log(res.data);
             setCandidates(res.data);
 
         }
