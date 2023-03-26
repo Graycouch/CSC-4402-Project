@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Grid, Typography, TextField, Button, createTheme, ThemeProvider } from "@mui/material";
+import React, { useState, useEffect } from 'react'
+import { Grid, createTheme, ThemeProvider } from "@mui/material";
 import CandidateCard from './CandidateCard.js';
 import axios from 'axios'
 import './Candidates.css'
