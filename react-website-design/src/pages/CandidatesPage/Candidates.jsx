@@ -17,11 +17,11 @@ function Candidates() {
             fontFamily: 'Playfair Display',
         },
     });
-    
+
     // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
-    
+
     /* Don't know how to properly use database functions */
     async function getCandidates() {
         try {
@@ -70,13 +70,13 @@ function Candidates() {
     
     return (
         <ThemeProvider theme={theme}>
-        <div>
-            <h1 style={{ textAlign: 'center' }}>Candidates</h1>
-        </div>
-        <br></br>
-        <div>
-            {cards}
-        </div>
+            <div>
+                <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+            </div>
+            <br></br>
+            <div>
+                {cards}
+            </div>
         </ThemeProvider>
     );
 }
