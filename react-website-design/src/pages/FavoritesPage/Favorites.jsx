@@ -1,14 +1,14 @@
 import React from 'react'
-import './Profile.css'
+import './Favorites.css'
 
-function Profile() {
+function Favorites() {
     return (
         <div>
             <h1 style={{ textAlign: 'center' }}>
-                Profile
+                Favorites
             </h1>
         </div>
     )
 }
 
-export default Profile;
+export default Favorites;
