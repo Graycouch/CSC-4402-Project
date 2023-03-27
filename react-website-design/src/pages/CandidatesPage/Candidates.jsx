@@ -1,11 +1,10 @@
-import { useGlobalState } from '../../globalValues';
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
 import CandidateCard from './CandidateCard.js';
-import axios from 'axios'
-import './Candidates.css'
+import axios from 'axios';
+import './Candidates.css';
 
-export default function Candidates() {
+function Candidates() {
     // Creates theme for Material UI components
     const theme = createTheme({
         palette: {
@@ -14,58 +13,59 @@ export default function Candidates() {
             },
         },
         typography: {
-            fontFamily: 'Playfair Display',
+            fontFamily: 'Bison, sans-serif',
+            fontWeightBold: 700,
         },
     });
 
     // Global variables for maintaining candidate data and to render cards
-    const [candidates, setCandidates] = useState([]);
+    const [candidateData, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
     const [user] = useGlobalState("user");
 
     /* Don't know how to properly use database functions */
     async function getCandidates() {
         try {
-            const response = await axios.get('http://localhost:8080/candidate');
-            console.log(response);
-            setCandidates(response.data[0]);
+            const res = await axios.get('http://localhost:8080/candidate');
+            console.log(res.data);
+            setCandidates(res.data);
+
         }
         catch (error) {
             console.log(error);
         }
     }
 
-    // Function to render cards
-    function showCandidateCards() {
-        return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{ textAlign: "center" }}>
-                {candidates.map((candidate) => {
-                    return (
-                        <Grid item md={3}>
-                            <CandidateCard candidateData={candidate} />
-                        </Grid>
-                    );
-                })}
-            </Grid>
-        );
-    }
-
-    //Ensures cards are not lost after page refresh
     useEffect(() => {
         getCandidates();
-        setCards(showCandidateCards());
     }, []);
-
+   
+    // Function to render cards
+    function showCandidateCards(candidateData) {
+        return (
+          <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            {candidateData.map((candidate) => (
+              <Grid container spacing={0} item xs={12} sm={6} md={4}>
+                <CandidateCard candidateData={candidate} />
+              </Grid>
+            ))}
+          </Grid>
+        );
+    }
+      
+    //Ensures cards are not lost after page refresh
+    useEffect(() => {
+        setCards(showCandidateCards(candidateData));
+    }, [candidateData]);
+    
     return (
         <ThemeProvider theme={theme}>
-            <div className="Candidates">
-                <div>
-                    <h1 style={{ textAlign: 'center' }}>Candidates</h1>
-                </div>
-                <br></br>
-                <div>
-                    {cards}
-                </div>
+            <div>
+                <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+            </div>
+            <br></br>
+            <div className="card-container">
+                {cards}
             </div>
         </ThemeProvider>
     )

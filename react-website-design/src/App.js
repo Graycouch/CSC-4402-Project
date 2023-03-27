@@ -10,6 +10,7 @@ export default function App() {
 
   return (
     <div>
+      <Navbar />
       {isLoggedIn ? (
         <Navbar />
       ) : isRegistering ? (

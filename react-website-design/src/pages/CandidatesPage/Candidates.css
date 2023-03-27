@@ -1,6 +1,13 @@
-.Candidates {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* .candidate-cards {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+} */
+  
+.card-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1100px;
 }
+  
