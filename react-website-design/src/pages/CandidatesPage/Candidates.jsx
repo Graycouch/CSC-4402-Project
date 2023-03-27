@@ -1,6 +1,7 @@
+import { useGlobalState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
-import CandidateCard from './CandidateCard.js';
+import CandidateCard from './CandidateCard';
 import axios from 'axios';
 import './Candidates.css';
 
@@ -45,7 +46,7 @@ function Candidates() {
         return (
           <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
             {candidateData.map((candidate) => (
-              <Grid container spacing={0} item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <CandidateCard candidateData={candidate} />
               </Grid>
             ))}
@@ -70,3 +71,5 @@ function Candidates() {
         </ThemeProvider>
     )
 }
+
+export default Candidates;
