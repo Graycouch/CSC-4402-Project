@@ -11,13 +11,13 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* {isLoggedIn ? (
+      {isLoggedIn ? (
         <Navbar />
       ) : isRegistering ? (
         <Register />
       ) : (
         <Login />
-      )} */}
+      )}
     </div>
   );
 }
