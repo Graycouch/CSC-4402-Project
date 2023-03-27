@@ -2,7 +2,7 @@ const database = require('../database-connection');
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-    let query = "SELECT * FROM voter ORDER BY ID";
+    let query = "SELECT * FROM favorites ORDER BY voter_ID";
 
     database.query(query, function (error, data) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -17,9 +17,9 @@ router.get("/", async (req, res) => {
 
 router.get("/get/:id", async (req, res) => {
     if (!req.params.id) {
-        res.status(400).send("You need to provide an ID for the voter you want to get!");
+        res.status(400).send("You need to provide an ID for the favorites you want to get!");
     } else {
-        let query = `SELECT * FROM voter WHERE ID = ${req.params.id}`;
+        let query = `SELECT * FROM candidate INNER JOIN favorites ON candidate.ID = favorites.candidate_ID WHERE voter_ID = ${req.params.id}`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
@@ -34,9 +34,8 @@ router.get("/get/:id", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-    if (req.body.ID !== undefined && req.body.first_name !== undefined && req.body.last_name !== undefined &&
-        req.body.SSN !== undefined && req.body.DOB !== undefined && req.body.district_number !== undefined && req.body.state !== undefined) {
-        let query = `INSERT INTO voter VALUES (${req.body.ID}, "${req.body.first_name}", "${req.body.last_name}", "${req.body.SSN}", "${req.body.DOB}", null, null, null, "${req.body.district_number}", "${req.body.state}")`;
+    if (req.body.voter_ID !== undefined && req.body.candidate_ID !== undefined) {
+        let query = `INSERT INTO favorites VALUES (${req.body.voter_ID}, ${req.body.candidate_ID})`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
@@ -48,15 +47,13 @@ router.post("/create", async (req, res) => {
             }
         })
     } else {
-        res.status(500).send("You need to provide data for all the given fields!");
+        res.status(500).send("You need to provide a voter ID and candidate ID to create a favorite!");
     }
 });
 
-router.delete("/delete/:id", async (req, res) => {
-    if (!req.params.id) {
-        res.status(400).send("You need to provide an ID for the voter you want to delete!");
-    } else {
-        let query = `DELETE FROM voter WHERE ID = ${req.params.id}`;
+router.delete("/delete", async (req, res) => {
+    if (req.body.voter_ID !== undefined && req.body.candidate_ID !== undefined) {
+        let query = `DELETE FROM favorites WHERE voter_ID = ${req.body.voter_ID} && candidate_ID = ${req.body.candidate_ID}`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
@@ -64,9 +61,11 @@ router.delete("/delete/:id", async (req, res) => {
             if (error) {
                 res.status(500).send("An error occurred executing this query!");
             } else {
-                res.status(200).send("Voter deleted successfully!");
+                res.status(200).send("Favorite deleted successfully!");
             }
         })
+    } else {
+        res.status(400).send("You need to provide an a voter ID and candidate ID for the favorite you want to delete!");
     }
 });
 
