@@ -44,7 +44,7 @@ function Candidates() {
         return (
           <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
             {candidateData.map((candidate) => (
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid container spacing={0} item xs={12} sm={6} md={4}>
                 <CandidateCard candidateData={candidate} />
               </Grid>
             ))}
@@ -63,7 +63,7 @@ function Candidates() {
                 <h1 style={{ textAlign: 'center' }}>Candidates</h1>
             </div>
             <br></br>
-            <div className="card-div">
+            <div className="card-container">
                 {cards}
             </div>
         </ThemeProvider>

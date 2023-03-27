@@ -63,7 +63,7 @@ FOREIGN KEY (party_ID) REFERENCES party(ID)
 );
 
 INSERT INTO candidate VALUES ('999', 'Joe', 'Mama', '123-45-6789', '07/12/1900', 'JM@gmail.com', '504-493-1415', 9, 4, 'Louisiana', 'President', 'wow, abortions!', 'school safety', 'back in summer camp', 'Hello fellow kids', 'save then world with oil', 'can\'t stop me now');
-INSERT INTO candidate VALUES ('947', 'Specimen', '#947', '666-69-6666', '01/02/1600', 'human@gmail.com', '667-246-7354', 99, 1, null, null, 'feed me more', 'banned', 'don\'t care', 'don\'t care', 'don\'t care', 'I hunger');
+INSERT INTO candidate VALUES ('947', 'Specimen', '947', '666-69-6666', '01/02/1600', 'human@gmail.com', '667-246-7354', 99, 1, null, null, 'feed me more', 'banned', 'don\'t care', 'don\'t care', 'don\'t care', 'I hunger');
 INSERT INTO candidate VALUES ('537', 'Billy', 'Bob', '725-25-7257', '08/02/1993', 'billy@gmail.com', '164-246-7273', 3, 16, 'Louisiana', 'Cook', 'Should be accessible for everyone', 'Should be accessible for everyone', 'Should be accessible for everyone', 'Don\'t care', 'Let the free market take care of it', 'Lower the age of consent');
 INSERT INTO candidate VALUES ('635', 'Dan', 'Jackson', '734-14-7489', '09/16/1990', 'dan@gmail.com', '624-265-9476', 1, 16, 'Texas', 'Farmer', 'Do not murder babies', 'I need more guns to feel safe', 'Stay away from me', 'Just not in front of me', 'Black gold never gets old', 'Brought to you by your local billionaire');
 INSERT INTO candidate VALUES ('723', 'Ben', 'Jake', '244-16-7342', '09/22/1989', 'ben@gmail.com', '745-345-8576', 2, 12, 'New York', 'Entrepreneur', 'I support it, but I will not protect it', 'Guns are cringe', 'They love me', 'OMG, me!', 'Stop poluting, silly', 'Brought to you by your local billionaire');
