@@ -1,14 +1,14 @@
-import React from 'react'
+import { useGlobalState } from '../../globalValues';
 import './Favorites.css'
 
-function Favorites() {
+export default function Favorites() {
+    const [user] = useGlobalState("user");
+
     return (
-        <div>
+        <div className="Favorites">
             <h1 style={{ textAlign: 'center' }}>
                 Favorites
             </h1>
         </div>
     )
 }
-
-export default Favorites;

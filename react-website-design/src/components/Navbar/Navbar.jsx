@@ -9,12 +9,13 @@ import Profile from '../../pages/ProfilePage/Profile';
 import Candidates from '../../pages/CandidatesPage/Candidates';
 import Elections from '../../pages/ElectionsPage/Elections';
 import Favorites from '../../pages/FavoritesPage/Favorites';
+import './Navbar.css'
 
 function NavbarComponent() {
   return (
     <>
       <Router>
-        <div>
+        <div className="Navbar">
           {['xxl'].map((expand) => (
             <Navbar key={expand} bg="dark" variant="dark" expand={expand} className="mb-3">
               <Container fluid>

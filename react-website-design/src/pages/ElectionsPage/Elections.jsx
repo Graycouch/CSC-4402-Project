@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import { useGlobalState } from '../../globalValues';
+import './Elections.css';
 
-export default class Elections extends Component {
-    render() {
+export default function Elections() {
+    const [user] = useGlobalState("user");
+
         return (
-            <div>
+            <div className="Elections">
                 <h1 style={{ textAlign: 'center' }}>
                     Elections
                 </h1>
             </div>
         )
-    }
 }
