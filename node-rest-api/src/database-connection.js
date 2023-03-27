@@ -4,7 +4,7 @@ let connection = mysql2.createConnection({
     host: 'localhost',
     database: 'voter_registration',
     user: 'root',
-    password: 'Corvette123*'
+    password: '12345'
 });
 
 connection.connect(function (error) {
