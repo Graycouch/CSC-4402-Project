@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, Picker } from 'react';
 import "./Profile.css";
 
 export default class Voters extends Component {
