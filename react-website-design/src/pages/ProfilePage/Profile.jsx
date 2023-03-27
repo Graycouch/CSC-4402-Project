@@ -29,15 +29,15 @@ export default class Voters extends Component {
                     <p><strong>Name: </strong>John Doe</p>
                     <p><strong>Date of Birth: </strong>01/01/1990</p>
                     <p><strong>Political Party: </strong>Democrat</p>
-                    <p><strong>Current Job: </strong>State Senator</p>
+                    {/* <p><strong>Current Job: </strong>State Senator</p> ***Not meant for this page***  */}
                     <p><strong>District Number: </strong>1</p>
                     <p><strong>State: </strong>California</p>
-                    <select value={this.state.selectedOpinion} onChange={(e) => this.setState({ selectedOpinion: e.target.value })}>
+                    {/* <select value={this.state.selectedOpinion} onChange={(e) => this.setState({ selectedOpinion: e.target.value })}>
                         <option value="">Political Opinions</option>
-                        {this.state.opinions.map((opinion, index) => (
+                        {this.state.opinions.map((opinion, index) => (               ***Not meant for this page***
                             <option key={index} value={opinion}>{opinion}</option>
                         ))}
-                    </select>
+                    </select> */}
                 </div>
             </div>
             </div> 
