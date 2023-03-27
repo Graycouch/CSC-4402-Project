@@ -4,7 +4,7 @@ import Login from './pages/LoginPage/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './pages/RegisterPage/Register';
 
-function App() {
+export default function App() {
   const [isLoggedIn] = useGlobalState("isLoggedIn");
   const [isRegistering] = useGlobalState("isRegistering");
 
@@ -20,5 +20,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

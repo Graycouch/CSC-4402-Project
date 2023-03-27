@@ -1,9 +1,8 @@
 import { setGlobalState } from '../../globalValues';
 import axios from "axios";
-import React from "react";
 import "./Login.css";
 
-function Login() {
+export default function Login() {
     const handleLoginClick = async (e) => {
         e.preventDefault();
         const ID = document.getElementsByClassName("LoginInput")[0].value;
@@ -55,5 +54,3 @@ function Login() {
         </div>
     )
 }
-
-export default Login;

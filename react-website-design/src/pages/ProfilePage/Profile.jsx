@@ -1,47 +1,27 @@
-
-import React, { Component } from 'react';
+import { useGlobalState } from '../../globalValues';
 import "./Profile.css";
 
-export default class Voters extends Component {
-    state = {
-        opinions: ['Opinion 1', 'Opinion 2', 'Opinion 3'],
-        selectedOpinion: ''
-      }
-    
-      render() {
-        return (
-            <div>
-                <div className="profile-container">
-                    <h1>
-                       My Profile
-                    </h1>
-                </div>
+export default function Profile() {
+  const [user] = useGlobalState("user");
 
-            <div>
-                <p>
-                <img className="profile-picture" src="goat.png" alt="Profile"/>
-                </p>
-            </div>
+  return (
+    <div className="Profile">
+      <div>
+        <p>
+          <img className="profile-picture" src="goat.png" alt="Profile" />
+        </p>
+      </div>
 
-            <div className="profile-container">
-                <div className="profile-info">
-                    <p><strong>Voter ID: 123456</strong></p>
-                    <p><strong>Name: </strong>John Doe</p>
-                    <p><strong>Date of Birth: </strong>01/01/1990</p>
-                    <p><strong>Political Party: </strong>Democrat</p>
-                    {/* <p><strong>Current Job: </strong>State Senator</p> ***Not meant for this page***  */}
-                    <p><strong>District Number: </strong>1</p>
-                    <p><strong>State: </strong>California</p>
-                    {/* <select value={this.state.selectedOpinion} onChange={(e) => this.setState({ selectedOpinion: e.target.value })}>
-                        <option value="">Political Opinions</option>
-                        {this.state.opinions.map((opinion, index) => (               ***Not meant for this page***
-                            <option key={index} value={opinion}>{opinion}</option>
-                        ))}
-                    </select> */}
-                </div>
-            </div>
-            </div> 
-        );
-      }
+      <div className="profile-container">
+        <div className="profile-info">
+          <p><strong>Voter ID: </strong>{user.ID}</p>
+          <p><strong>Name: </strong>{user.first_name} {user.last_name}</p>
+          <p><strong>Date of Birth: </strong>{user.DOB}</p>
+          <p><strong>Political Party: </strong>{user.party_ID}</p>
+          <p><strong>District Number: </strong>{user.district_number}</p>
+          <p><strong>State: </strong>{user.state}</p>
+        </div>
+      </div>
+    </div>
+  )
 }
-

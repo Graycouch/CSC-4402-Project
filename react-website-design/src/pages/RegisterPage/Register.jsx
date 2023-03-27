@@ -2,7 +2,7 @@ import { setGlobalState } from '../../globalValues';
 import axios from 'axios';
 import "./Register.css"
 
-function Register() {
+export default function Register() {
     const handleSignUpClick = (e) => {
         e.preventDefault();
 
@@ -60,5 +60,3 @@ function Register() {
         </div>
     )
 }
-
-export default Register;

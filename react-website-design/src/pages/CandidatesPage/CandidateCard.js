@@ -40,5 +40,5 @@ export default function CandidateCard(candidateData) {
                 </Typography>
             </CardContent>
         </Card>
-    );
+    )
 }
