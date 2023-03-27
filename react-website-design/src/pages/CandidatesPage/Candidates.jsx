@@ -13,7 +13,8 @@ function Candidates() {
             },
         },
         typography: {
-            fontFamily: 'Playfair Display',
+            fontFamily: 'Bison, sans-serif',
+            fontWeightBold: 700,
         },
     });
 
@@ -39,9 +40,9 @@ function Candidates() {
     }, []);
    
     // Function to render cards
-    function showCandidateCards() {
+    function showCandidateCards(candidateData) {
         return (
-          <Grid container spacing={10} justifyContent="center" className={'candidate-cards'} sx={{ textAlign: "center" }}>
+          <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
             {candidateData.map((candidate) => (
               <Grid item xs={12} sm={6} md={4}>
                 <CandidateCard candidateData={candidate} />
@@ -50,10 +51,10 @@ function Candidates() {
           </Grid>
         );
     }
-
+      
     //Ensures cards are not lost after page refresh
     useEffect(() => {
-        setCards(showCandidateCards());
+        setCards(showCandidateCards(candidateData));
     }, [candidateData]);
     
     return (
@@ -62,7 +63,7 @@ function Candidates() {
                 <h1 style={{ textAlign: 'center' }}>Candidates</h1>
             </div>
             <br></br>
-            <div>
+            <div className="card-div">
                 {cards}
             </div>
         </ThemeProvider>
