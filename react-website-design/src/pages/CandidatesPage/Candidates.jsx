@@ -35,7 +35,6 @@ function Candidates() {
     async function getCandidates() {
         try {
             const res = await axios.get('http://localhost:8080/candidate');
-            console.log(res.data);
             setCandidates(res.data);
 
         }
