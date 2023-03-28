@@ -5,6 +5,13 @@ import CandidateCard from './CandidateCard';
 import axios from 'axios';
 import './Candidates.css';
 
+/*
+    TODO:
+    - Create Dropdown for each candidate card to show info on their current election (total votes, etc.)
+    - Create a learn more button that links to the candidate's profile page (which can be instantiated with the candidate's ID)
+    - Create a vote button that links to the candidate's election page 
+*/
+
 function Candidates() {
     // Creates theme for Material UI components
     const theme = createTheme({
