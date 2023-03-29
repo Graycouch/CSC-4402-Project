@@ -22,24 +22,6 @@
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-.edit-profile{
-  margin-top: 50px;
-  height: '36px';
-  overflow: 'visible'
-}
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
-}
-
-select {
-  margin-top: 1px;
-  padding: 4px;
-  border-radius: 1px;
-  border: 1;
+  margin-top: 40%;
+  margin-bottom: 5%;
 }

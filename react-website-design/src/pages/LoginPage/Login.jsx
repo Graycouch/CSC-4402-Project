@@ -10,12 +10,17 @@ export default function Login() {
             const user = await axios.get("http://localhost:8080/voter/get/" + ID);
 
             if (user.data[0] !== undefined) {
-                console.log(user.data[0]);
                 setGlobalState("user", user.data[0]);
-                setGlobalState("isLoggedIn", true);
+                console.log(user.data[0]);
             } else {
                 console.log("Please enter a valid Voter ID");
             }
+
+            const partyIDs = await axios.get("http://localhost:8080/party");
+            setGlobalState("partyIDs", partyIDs.data);
+            console.log(partyIDs.data);
+
+            setGlobalState("isLoggedIn", true);
         } catch (err) {
             console.log(err);
         }

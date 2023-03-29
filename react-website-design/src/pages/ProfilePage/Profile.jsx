@@ -1,14 +1,74 @@
-import { useGlobalState } from '../../globalValues';
+import { useGlobalState, setGlobalState } from '../../globalValues';
 import React, { useState } from 'react';
 import "./Profile.css";
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon, MDBBtn } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBBtn, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
 
 export default function Profile() {
   const [user] = useGlobalState("user");
-  const [userData, setUserData] = useState(user);
+  const [partyIDs] = useGlobalState("partyIDs");
+  const [state, setState] = useState(user.state);
+  const [district_number, setDistrictNumber] = useState(user.district_number);
+  const [email, setEmail] = useState(user.email);
+  const [phone_number, setPhoneNumber] = useState(user.phone_number);
+  const [party_name, setPartyName] = useState(partyIDs.find((partyID) => {
+    return partyID.ID === user.party_ID
+  }).party_name);
 
   const editProfile = () => {
-    console.log("Hello");
+    document.getElementById("editProfile").style.display = "none";
+    document.getElementById("saveChanges").style.display = "block";
+
+    document.getElementById("state").style.display = "none";
+    document.getElementById("stateInput").style.display = "block";
+
+    document.getElementById("districtNumber").style.display = "none";
+    document.getElementById("districtNumberInput").style.display = "block";
+
+    document.getElementById("email").style.display = "none";
+    document.getElementById("emailInput").style.display = "block";
+
+    document.getElementById("phoneNumber").style.display = "none";
+    document.getElementById("phoneNumberInput").style.display = "block";
+
+    document.getElementById("partyID").style.display = "none";
+    document.getElementById("dropdown").style.display = "block";
+  }
+
+  const saveChanges = () => {
+    document.getElementById("editProfile").style.display = "block";
+    document.getElementById("saveChanges").style.display = "none";
+
+    document.getElementById("state").style.display = "block";
+    document.getElementById("stateInput").style.display = "none";
+
+    document.getElementById("districtNumber").style.display = "block";
+    document.getElementById("districtNumberInput").style.display = "none";
+
+    document.getElementById("email").style.display = "block";
+    document.getElementById("emailInput").style.display = "none";
+
+    document.getElementById("phoneNumber").style.display = "block";
+    document.getElementById("phoneNumberInput").style.display = "none";
+
+    document.getElementById("partyID").style.display = "block";
+    document.getElementById("dropdown").style.display = "none";
+
+    const party_ID = partyIDs.find((partyID) => {
+      return partyID.party_name === party_name
+    }).ID;
+
+    setGlobalState("user", {
+      "ID": user.ID,
+      "first_name": user.first_name,
+      "last_name": user.last_name,
+      "SSN": user.SSN,
+      "DOB": user.DOB,
+      "email": email,
+      "phone_number": phone_number,
+      "party_ID": party_ID,
+      "district_number": district_number,
+      "state": state
+    });
   }
 
   return (
@@ -23,9 +83,18 @@ export default function Profile() {
 
                   <MDBCardImage src="/Images/default.png" className="profile-picture" fluid />
                   <MDBTypography tag="h5">{user.first_name} {user.last_name}</MDBTypography>
-                  <MDBBtn className='my-4' outline color="light" style={{ height: '36px', overflow: 'visible' }} onClick={() => editProfile()}>
-                    Edit profile
-                  </MDBBtn>
+                  <MDBTypography tag="h7">{user.ID}</MDBTypography>
+                  <div id="editProfile">
+                    <MDBBtn className='my-4' outline color="light" style={{ height: '36px', overflow: 'visible' }} onClick={() => editProfile()}>
+                      Edit profile
+                    </MDBBtn>
+                  </div>
+
+                  <div id="saveChanges" style={{ display: "none" }}>
+                    <MDBBtn className='my-4' outline color="light" style={{ height: '36px', overflow: 'visible' }} onClick={() => saveChanges()}>
+                      Save Changes
+                    </MDBBtn>
+                  </div>
                 </MDBCol>
 
                 <MDBCol md="8">
@@ -37,36 +106,87 @@ export default function Profile() {
                     <MDBRow className="pt-1">
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">SSN</MDBTypography>
-                        <MDBCardText className="text-muted">{userData.SSN}</MDBCardText>
+                        <div id="SSN">
+                          <MDBCardText className="text-muted">{user.SSN}</MDBCardText>
+                        </div>
                       </MDBCol>
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Birthday</MDBTypography>
-                        <MDBCardText className="text-muted">{userData.DOB}</MDBCardText>
+                        <div id="DOB">
+                          <MDBCardText className="text-muted">{user.DOB}</MDBCardText>
+                        </div>
                       </MDBCol>
                     </MDBRow>
 
                     <MDBRow className="pt-1">
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">State</MDBTypography>
-                        <MDBCardText className="text-muted">{user.state}</MDBCardText>
+                        <div id="state">
+                          <MDBCardText className="text-muted">{state}</MDBCardText>
+                        </div>
+                        <div id="stateInput" style={{ display: "none" }}>
+                          <input type="text" className="form-control" style={{ width: "90%" }} value={state} onChange={e => setState(e.target.value)} />
+                        </div>
                       </MDBCol>
                       <MDBCol size="6" className="mb-3">
+
                         <MDBTypography tag="h6">District Number</MDBTypography>
-                        <MDBCardText className="text-muted">{user.district_number}</MDBCardText>
+                        <div id="districtNumber">
+                          <MDBCardText className="text-muted">{district_number}</MDBCardText>
+                        </div>
+                        <div id="districtNumberInput" style={{ display: "none" }}>
+                          <input type="text" className="form-control" style={{ width: "90%" }} value={district_number} onChange={e => setDistrictNumber(e.target.value)} />
+                        </div>
                       </MDBCol>
                     </MDBRow>
 
                     <MDBRow className="pt-1">
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Email</MDBTypography>
-                        <MDBCardText className="text-muted">{userData.email}</MDBCardText>
+                        <div id="email">
+                          <MDBCardText className="text-muted">{email}</MDBCardText>
+                        </div>
+                        <div id="emailInput" style={{ display: "none" }}>
+                          <input type="text" className="form-control" style={{ width: "90%" }} value={email} onChange={e => setEmail(e.target.value)} />
+                        </div>
                       </MDBCol>
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Phone Number</MDBTypography>
-                        <MDBCardText className="text-muted">{user.phone_number}</MDBCardText>
+                        <div id="phoneNumber">
+                          <MDBCardText className="text-muted">{phone_number}</MDBCardText>
+                        </div>
+                        <div id="phoneNumberInput" style={{ display: "none" }}>
+                          <input type="text" className="form-control" style={{ width: "90%" }} value={phone_number} onChange={e => setPhoneNumber(e.target.value)} />
+                        </div>
                       </MDBCol>
                     </MDBRow>
 
+                    <MDBRow className="pt-1">
+                      <MDBCol size="6" className="mb-4">
+                        <MDBTypography tag="h6">Party Affiliation</MDBTypography>
+                        <div id="partyID">
+                          <MDBCardText className="text-muted">{party_name}</MDBCardText>
+                        </div>
+                        <MDBDropdown id="dropdown" style={{ position: "fixed", display: "none" }}>
+                          <MDBDropdownToggle className="btn btn-dark dropdown-toggle" style={{ height: "40px", width: "180px" }}>{party_name}</MDBDropdownToggle>
+                          <MDBDropdownMenu>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[0].party_name)}>{partyIDs[0].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[1].party_name)}>{partyIDs[1].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[2].party_name)}>{partyIDs[2].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[3].party_name)}>{partyIDs[3].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[4].party_name)}>{partyIDs[4].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[5].party_name)}>{partyIDs[5].party_name}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[6].party_name)}>{partyIDs[6].party_name}</MDBDropdownItem>
+                          </MDBDropdownMenu>
+                        </MDBDropdown>
+                      </MDBCol>
+                    </MDBRow>
                   </MDBCardBody>
                 </MDBCol>
               </MDBRow>
