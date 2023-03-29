@@ -1,5 +1,11 @@
 .Profile{
+  padding-top: 5%;
+  height: 100vh;
   width: 100vw;
+}
+
+.gradient-custom {
+  background: #212529;
 }
 
 .profile-container {
@@ -11,13 +17,19 @@
 
 .profile-picture {
   display: block;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.edit-profile{
+  margin-top: 50px;
+  height: '36px';
+  overflow: 'visible'
 }
 
 .profile-info {
