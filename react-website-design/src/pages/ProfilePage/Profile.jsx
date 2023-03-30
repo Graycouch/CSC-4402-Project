@@ -2,6 +2,7 @@ import { useGlobalState, setGlobalState } from '../../globalValues';
 import React, { useState } from 'react';
 import "./Profile.css";
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBBtn, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
+import axios from 'axios';
 
 export default function Profile() {
   const [user] = useGlobalState("user");
@@ -34,7 +35,7 @@ export default function Profile() {
     document.getElementById("dropdown").style.display = "block";
   }
 
-  const saveChanges = () => {
+  const saveChanges = async () => {
     document.getElementById("editProfile").style.display = "block";
     document.getElementById("saveChanges").style.display = "none";
 
@@ -69,6 +70,17 @@ export default function Profile() {
       "district_number": district_number,
       "state": state
     });
+
+    const res = await axios.post("http://localhost:8080/voter/update", {
+      "ID": user.ID,
+      "email": email,
+      "phone_number": phone_number,
+      "party_ID": party_ID,
+      "district_number": district_number,
+      "state": state
+    });
+
+    console.log(res);
   }
 
   return (
@@ -83,7 +95,6 @@ export default function Profile() {
 
                   <MDBCardImage src="/Images/default.png" className="profile-picture" fluid />
                   <MDBTypography tag="h5">{user.first_name} {user.last_name}</MDBTypography>
-                  <MDBTypography tag="h7">{user.ID}</MDBTypography>
                   <div id="editProfile">
                     <MDBBtn className='my-4' outline color="light" style={{ height: '36px', overflow: 'visible' }} onClick={() => editProfile()}>
                       Edit profile
