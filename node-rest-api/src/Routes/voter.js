@@ -52,6 +52,24 @@ router.post("/create", async (req, res) => {
     }
 });
 
+router.post("/update", async (req, res) => {
+    if (!req.body.ID) {
+        res.status(400).send("You need to provide an ID for the voter you want to update!");
+    } else {
+        let query = `UPDATE voter SET state = "${req.body.state}", district_number = "${req.body.district_number}", email = "${req.body.email}", phone_number = "${req.body.phone_number}", party_ID = "${req.body.party_ID}" WHERE ID = ${req.body.ID}`;
+
+        database.query(query, function (error, data) {
+            res.header("Access-Control-Allow-Origin", "*");
+
+            if (error) {
+                res.status(500).send("An error occurred executing this query!");
+            } else {
+                res.status(200).json(data);
+            }
+        })
+    }
+});
+
 router.delete("/delete/:id", async (req, res) => {
     if (!req.params.id) {
         res.status(400).send("You need to provide an ID for the voter you want to delete!");
