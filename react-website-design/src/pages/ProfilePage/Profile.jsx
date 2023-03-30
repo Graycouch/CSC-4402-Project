@@ -12,7 +12,7 @@ export default function Profile() {
   const [phone_number, setPhoneNumber] = useState(user.phone_number);
   const [party_name, setPartyName] = useState(partyIDs.find((partyID) => {
     return partyID.ID === user.party_ID
-  }).party_name);
+  })?.party_name);
 
   const editProfile = () => {
     document.getElementById("editProfile").style.display = "none";
@@ -144,7 +144,7 @@ export default function Profile() {
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Email</MDBTypography>
                         <div id="email">
-                          <MDBCardText className="text-muted">{email}</MDBCardText>
+                          <MDBCardText className="text-muted">{email ? email : "N/A"}</MDBCardText>
                         </div>
                         <div id="emailInput" style={{ display: "none" }}>
                           <input type="text" className="form-control" style={{ width: "90%" }} value={email} onChange={e => setEmail(e.target.value)} />
@@ -153,7 +153,7 @@ export default function Profile() {
                       <MDBCol size="6" className="mb-3">
                         <MDBTypography tag="h6">Phone Number</MDBTypography>
                         <div id="phoneNumber">
-                          <MDBCardText className="text-muted">{phone_number}</MDBCardText>
+                          <MDBCardText className="text-muted">{phone_number ? phone_number : "N/A"}</MDBCardText>
                         </div>
                         <div id="phoneNumberInput" style={{ display: "none" }}>
                           <input type="text" className="form-control" style={{ width: "90%" }} value={phone_number} onChange={e => setPhoneNumber(e.target.value)} />
@@ -165,7 +165,7 @@ export default function Profile() {
                       <MDBCol size="6" className="mb-4">
                         <MDBTypography tag="h6">Party Affiliation</MDBTypography>
                         <div id="partyID">
-                          <MDBCardText className="text-muted">{party_name}</MDBCardText>
+                          <MDBCardText className="text-muted">{party_name ? party_name : "N/A"}</MDBCardText>
                         </div>
                         <MDBDropdown id="dropdown" style={{ position: "fixed", display: "none" }}>
                           <MDBDropdownToggle className="btn btn-dark dropdown-toggle" style={{ height: "40px", width: "180px" }}>{party_name}</MDBDropdownToggle>
