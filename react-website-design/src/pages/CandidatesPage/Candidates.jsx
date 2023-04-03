@@ -50,7 +50,7 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards(candidateData) {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            <Grid container spacing={25} justifyContent="center" className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} />
