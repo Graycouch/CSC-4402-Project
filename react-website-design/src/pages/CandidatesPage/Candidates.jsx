@@ -46,33 +46,35 @@ function Candidates() {
     useEffect(() => {
         getCandidates();
     }, []);
-   
+
     // Function to render cards
     function showCandidateCards(candidateData) {
         return (
-          <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
-            {candidateData.map((candidate) => (
-              <Grid item xs={12} sm={6} md={4}>
-                <CandidateCard candidateData={candidate} />
-              </Grid>
-            ))}
-          </Grid>
+            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+                {candidateData.map((candidate) => (
+                    <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
+                        <CandidateCard candidateData={candidate} />
+                    </Grid>
+                ))}
+            </Grid>
         );
     }
-      
+
     //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showCandidateCards(candidateData));
     }, [candidateData]);
-    
+
     return (
         <ThemeProvider theme={theme}>
-            <div>
-                <h1 style={{ textAlign: 'center' }}>Candidates</h1>
-            </div>
-            <br></br>
-            <div className="card-container">
-                {cards}
+            <div className="Candidates">
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+                </div>
+                <br></br>
+                <div className="card-container">
+                    {cards}
+                </div>
             </div>
         </ThemeProvider>
     )

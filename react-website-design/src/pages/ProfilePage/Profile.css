@@ -1,5 +1,11 @@
 .Profile{
+  padding-top: 5%;
+  height: 100vh;
   width: 100vw;
+}
+
+.gradient-custom {
+  background: #212529;
 }
 
 .profile-container {
@@ -11,23 +17,11 @@
 
 .profile-picture {
   display: block;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
-}
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
-}
-
-select {
-  margin-top: 1px;
-  padding: 4px;
-  border-radius: 1px;
-  border: 1;
+  margin-top: 40%;
+  margin-bottom: 5%;
 }
