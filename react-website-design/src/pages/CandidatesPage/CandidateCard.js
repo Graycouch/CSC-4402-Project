@@ -20,7 +20,7 @@ export default function CandidateCard(candidateData) {
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
   const [bio] = useState(
     "<p><br/>" + 
-    "<strong>ID:</strong> " + candidateData.ID + "<br />" +
+    "<strong>ID:</strong> " + id + "<br />" +
     "<strong>State:</strong> " + (candidateData.state || "N/A") + "<br />" +
     "<strong>District:</strong> " + candidateData.district_number + "<br />" +
     "<strong>Date of Birth:</strong> " + candidateData.DOB + "<br />" +
