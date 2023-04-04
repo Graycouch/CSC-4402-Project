@@ -5,6 +5,13 @@ import CandidateCard from './CandidateCard';
 import axios from 'axios';
 import './Candidates.css';
 
+/*
+    TODO:
+    - Create Dropdown for each candidate card to show info on their current election (total votes, etc.)
+    - Create a learn more button that links to the candidate's profile page (which can be instantiated with the candidate's ID)
+    - Create a vote button that links to the candidate's election page 
+*/
+
 function Candidates() {
     // Creates theme for Material UI components
     const theme = createTheme({
@@ -28,7 +35,6 @@ function Candidates() {
     async function getCandidates() {
         try {
             const res = await axios.get('http://localhost:8080/candidate');
-            console.log(res.data);
             setCandidates(res.data);
 
         }
@@ -44,7 +50,7 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards(candidateData) {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            <Grid container spacing={12} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} />
