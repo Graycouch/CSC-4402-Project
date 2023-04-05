@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Card, CardContent, CardMedia, Modal, Typography, Box, Button } from "@mui/material";
 import { Markup } from 'interweave';
+import { IconButton } from '@mui/material';
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import axios from 'axios';
 import './Candidates.css';
 
 export default function CandidateCard(candidateData) {
@@ -69,6 +72,22 @@ export default function CandidateCard(candidateData) {
     </Box>
   );
 
+  function toggleFavorites() {
+    //const favoriteClick = (e) => {
+
+      //check if candidate is already in the favorites database
+      //const res = await axios.get(`http://localhost:8080/favorites/get/${user.ID}`); 
+      
+      //if not add to database, find a way to toggle icon? to Favorite
+      //axios.post('http://localhost:8080/favorites/create');
+
+      //else remove candidate from favorites database onClick
+      //axios.post('http://localhost:8080/favorites/delete'); ?
+
+    //}
+
+  }
+
   return (
     <div>
       <Card sx={{ width: '350px', height: '650px', backgroundColor: "grey.200", mb: 3, mt: 3 }}>
@@ -87,7 +106,10 @@ export default function CandidateCard(candidateData) {
             {party}
           </Typography>
           <Markup className="bio" content={bio} />
-          <Button style={{ bottom: 0, left: '65%' }} onClick={handleOpen}>Learn More</Button>
+          <IconButton color="primary" style={{ right:'3%', bottom: 9 }}>
+            <FavoriteBorder fontSize="large"/>
+          </IconButton>
+          <Button style={{ bottom: 0, left: '53%' }} onClick={handleOpen}>Learn More</Button>
         </CardContent>
       </Card>
       <Modal
