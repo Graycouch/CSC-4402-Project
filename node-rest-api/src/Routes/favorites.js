@@ -51,7 +51,7 @@ router.post("/create", async (req, res) => {
     }
 });
 
-router.delete("/delete", async (req, res) => {
+router.post("/delete", async (req, res) => {
     if (req.body.voter_ID !== undefined && req.body.candidate_ID !== undefined) {
         let query = `DELETE FROM favorites WHERE voter_ID = ${req.body.voter_ID} && candidate_ID = ${req.body.candidate_ID}`;
 

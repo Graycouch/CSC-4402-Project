@@ -28,8 +28,19 @@ function Candidates() {
 
     // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
+  const [favorites, setFavorites] = useState([]);
     const [cards, setCards] = useState(null);
     const [user] = useGlobalState("user");
+
+    async function getFavorites() {
+        try {
+            const res = await axios.get(`http://localhost:8080/favorites/get/${user.ID}`);
+            setFavorites(res.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+      }
 
     /* Don't know how to properly use database functions */
     async function getCandidates() {
@@ -44,16 +55,17 @@ function Candidates() {
     }
 
     useEffect(() => {
+        getFavorites();
         getCandidates();
     }, []);
 
     // Function to render cards
-    function showCandidateCards(candidateData) {
+    function showCandidateCards(candidateData, favorites) {
         return (
             <Grid container spacing={12} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
-                        <CandidateCard candidateData={candidate} />
+                        <CandidateCard candidateData={candidate} favorites={favorites} />
                     </Grid>
                 ))}
             </Grid>
@@ -62,7 +74,7 @@ function Candidates() {
 
     //Ensures cards are not lost after page refresh
     useEffect(() => {
-        setCards(showCandidateCards(candidateData));
+        setCards(showCandidateCards(candidateData, favorites));
     }, [candidateData]);
 
     return (
