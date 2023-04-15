@@ -108,6 +108,11 @@ export default function CandidateCard(candidateData, favorites) {
     setOpen(false);
   };
 
+  const handleElectionClick = () => {
+    // replace this with the appropriate URL for your election page
+    window.location.href = 'http://localhost:3000/elections';
+  };
+
   const modalContent = (
     <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
       <Typography variant="h4">{candidate}</Typography>
@@ -122,7 +127,7 @@ export default function CandidateCard(candidateData, favorites) {
       />
       <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button style={{ bottom: -20, left: '38%' }} /*onClick={election page}*/>Vote Now</Button>
+        <Button style={{ bottom: -20, left: '38%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
       {/* Add more details here */}
     </Box>

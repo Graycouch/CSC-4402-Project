@@ -1,17 +1,27 @@
+import { useGlobalState, setGlobalState } from '../../globalValues';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  Navigate
 } from "react-router-dom";
 import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import Profile from '../../pages/ProfilePage/Profile';
 import Candidates from '../../pages/CandidatesPage/Candidates';
 import Elections from '../../pages/ElectionsPage/Elections';
 import Favorites from '../../pages/FavoritesPage/Favorites';
+import Login from '../../pages/LoginPage/Login';
 import './Navbar.css'
 
 function NavbarComponent() {
+  const [isLoggedIn] = useGlobalState("isLoggedIn");
+
+  function handleLogout() {
+    setGlobalState("isLoggedIn", false);
+    window.location.reload();
+  }
+
   return (
     <>
       <Router>
@@ -31,7 +41,7 @@ function NavbarComponent() {
                   <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
 
-                      <Nav.Link as={Link} to={"/"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                      <Nav.Link as={Link} to={"/elections"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Elections
                       </Nav.Link>
 
@@ -46,6 +56,10 @@ function NavbarComponent() {
                       <Nav.Link as={Link} to={"/profile"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Profile
                       </Nav.Link>
+
+                      <Nav.Link onClick={handleLogout} as={Link} to={"/login"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                        Logout
+                      </Nav.Link>              
 
                       <Form className="d-flex" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         <Form.Control
@@ -67,7 +81,9 @@ function NavbarComponent() {
 
         <div>
           <Routes>
-          <Route path="/" element={<Elections />} />
+            <Route path="/" element={<Navigate to={isLoggedIn ? "/elections" : "/login"} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/elections" element={<Elections />} />
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/profile" element={<Profile />} />
