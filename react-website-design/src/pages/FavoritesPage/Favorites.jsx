@@ -38,7 +38,7 @@ function Favorites() {
 
     useEffect(() => {
         getFavorites();
-    }, []);
+    });
 
     // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {
@@ -56,7 +56,7 @@ function Favorites() {
     //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showFavoritesCard(candidateData, favorites));
-    }, [candidateData]);
+    }, [candidateData, favorites]);
 
     return (
         <ThemeProvider theme={theme}>

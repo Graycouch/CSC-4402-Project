@@ -6,7 +6,12 @@ import { IconButton } from '@mui/material';
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
-import Favorites from "../FavoritesPage/Favorites";
+
+/*
+    TODO:
+    - Add more design to the modal
+    - Add a button to the modal that links to the election page
+*/
 
 export default function CandidateCard(candidateData, favorites) {
   favorites = candidateData.favorites;
@@ -54,7 +59,7 @@ export default function CandidateCard(candidateData, favorites) {
 
   useEffect(() => {
     getFavorites();
-  }, []);
+  });
 
   async function getFavorites() {
     try {
@@ -109,7 +114,7 @@ export default function CandidateCard(candidateData, favorites) {
       <Typography variant="h6" color="text.secondary" gutterBottom>{party}</Typography>
       <CardMedia
         component="img"
-        height="400"
+        height="300"
         width="200"
         image={img}
         alt="Candidate Image"
@@ -145,7 +150,7 @@ export default function CandidateCard(candidateData, favorites) {
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
-          <Button style={{ bottom: 0, left: '53%' }} onClick={handleOpen}>Learn More</Button>
+          <Button style={{ bottom: 10, left: '53%' }} onClick={handleOpen}>Learn More</Button>
         </CardContent>
       </Card>
       <Modal
