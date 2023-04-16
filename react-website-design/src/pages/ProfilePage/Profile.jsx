@@ -52,7 +52,6 @@ export default function Profile() {
     document.getElementById("partyID").style.display = "block";
     document.getElementById("dropdown").style.display = "none";
 
-    const party_name = document.getElementById("partyID").innerText;
     var party_id = 0;
     switch (party_name) {
       case "Republican":
@@ -101,7 +100,7 @@ export default function Profile() {
       "district_number": document.getElementById("districtNumber").innerText,
       "state": document.getElementById("state").innerText
     });
-    window.location.reload();
+    //window.location.reload();
     console.log(res);
   }
 
