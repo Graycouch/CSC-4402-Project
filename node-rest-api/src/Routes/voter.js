@@ -57,7 +57,7 @@ router.post("/update", async (req, res) => {
         res.status(400).send("You need to provide an ID for the voter you want to update!");
     } else {
         let query = `UPDATE voter SET state = "${req.body.state}", district_number = "${req.body.district_number}", email = "${req.body.email}", phone_number = "${req.body.phone_number}", party_ID = "${req.body.party_ID}" WHERE ID = ${req.body.ID}`;
-        console.log(query);
+        
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
 
