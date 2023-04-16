@@ -11,7 +11,7 @@ export default function Profile() {
   const [district_number, setDistrictNumber] = useState(user.district_number);
   const [email, setEmail] = useState(user.email);
   const [phone_number, setPhoneNumber] = useState(user.phone_number);
-  const [party_name, setPartyName] = useState("");
+  const [party_name, setPartyName] = useState(partyIDs[user.party_ID]);
 
   const editProfile = () => {
     document.getElementById("editProfile").style.display = "none";
@@ -91,7 +91,7 @@ export default function Profile() {
       "district_number": document.getElementById("districtNumber").innerText,
       "state": document.getElementById("state").innerText
     });
-    
+
     const res = await axios.post("http://localhost:8080/voter/update", {
       "ID": user.ID,
       "email": document.getElementById("email").innerText,
@@ -100,7 +100,7 @@ export default function Profile() {
       "district_number": document.getElementById("districtNumber").innerText,
       "state": document.getElementById("state").innerText
     });
-    //window.location.reload();
+    
     console.log(res);
   }
 
@@ -197,7 +197,7 @@ export default function Profile() {
                       <MDBCol size="6" className="mb-4">
                         <MDBTypography tag="h6">Party Affiliation</MDBTypography>
                         <div id="partyID">
-                          <MDBCardText className="text-muted">{party_name ? party_name : "N/A"}</MDBCardText>
+                          <MDBCardText className="text-muted">{party_name}</MDBCardText>
                         </div>
                         <MDBDropdown id="dropdown" style={{ position: "fixed", display: "none" }}>
                           <MDBDropdownToggle className="btn btn-dark dropdown-toggle" style={{ height: "40px", width: "180px" }}>{party_name}</MDBDropdownToggle>
