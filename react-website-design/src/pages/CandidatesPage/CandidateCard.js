@@ -17,7 +17,7 @@ export default function CandidateCard(candidateData, favorites) {
   favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
 
-    const partyNames = {
+  const partyNames = {
     1: "Republican",
     2: "Democrat",
     3: "Libertarian",

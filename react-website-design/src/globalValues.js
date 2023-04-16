@@ -13,3 +13,13 @@ export const getSessionState = (key) => {
 export const clearSessionState = () => {
   sessionStorage.clear();
 };
+
+setSessionState('partyIDs', {
+  1: "Republican",
+  2: "Democrat",
+  3: "Libertarian",
+  4: "Green",
+  5: "Forward",
+  9: "Independent",
+  99: "Illuminati"
+})

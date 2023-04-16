@@ -38,7 +38,7 @@ function Favorites() {
 
     useEffect(() => {
         getFavorites();
-    });
+    }, []);
 
     // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {

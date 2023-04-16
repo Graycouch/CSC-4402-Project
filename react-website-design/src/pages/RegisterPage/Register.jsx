@@ -6,6 +6,19 @@ export default function Register() {
     const handleSignUpClick = (e) => {
         e.preventDefault();
 
+        setSessionState("user", {
+            "ID": document.getElementById("ID").value,
+            "first_name": document.getElementById("first_name").value,
+            "last_name": document.getElementById("last_name").value,
+            "SSN": document.getElementById("SSN").value,
+            "DOB": document.getElementById("DOB").value,
+            "email": "",
+            "phone_number": "",
+            "party_ID": "",
+            "district_number": document.getElementById("district_number").value,
+            "state": document.getElementById("state").value
+        });
+
         axios.post(`http://localhost:8080/voter/create`, {
             ID: document.getElementById("ID").value,
             first_name: document.getElementById("first_name").value,
@@ -20,6 +33,7 @@ export default function Register() {
         }, (error) => {
             console.log(error);
         });
+        window.location.reload();
     }
 
     const handleLoginClick = (e) => {
