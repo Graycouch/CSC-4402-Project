@@ -11,15 +11,14 @@ import Profile from '../../pages/ProfilePage/Profile';
 import Candidates from '../../pages/CandidatesPage/Candidates';
 import Elections from '../../pages/ElectionsPage/Elections';
 import Favorites from '../../pages/FavoritesPage/Favorites';
-import Login from '../../pages/LoginPage/Login';
 import './Navbar.css'
 
 function NavbarComponent() {
   const [isLoggedIn] = useGlobalState("isLoggedIn");
-
+  
   function handleLogout() {
     setGlobalState("isLoggedIn", false);
-    window.location.reload();
+    window.location.href = "/";
   }
 
   return (
@@ -57,7 +56,7 @@ function NavbarComponent() {
                         Profile
                       </Nav.Link>
 
-                      <Nav.Link onClick={handleLogout} as={Link} to={"/login"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                      <Nav.Link onClick={handleLogout} as={Link} to={"/"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Logout
                       </Nav.Link>              
 
@@ -81,8 +80,7 @@ function NavbarComponent() {
 
         <div>
           <Routes>
-            <Route path="/" element={<Navigate to={isLoggedIn ? "/elections" : "/login"} />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Navigate to={isLoggedIn ? "/elections" : "/"} />} />
             <Route path="/elections" element={<Elections />} />
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />

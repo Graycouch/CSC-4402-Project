@@ -110,7 +110,7 @@ export default function CandidateCard(candidateData, favorites) {
 
   const handleElectionClick = () => {
     // replace this with the appropriate URL for your election page
-    window.location.href = 'http://localhost:3000/elections';
+    window.location.href = "/elections";
   };
 
   const modalContent = (
