@@ -1,4 +1,4 @@
-import { useGlobalState } from '../../globalValues';
+import { getSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import CandidateCard from '../CandidatesPage/CandidateCard';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
@@ -23,7 +23,7 @@ function Favorites() {
     const [candidateData, setFavorites] = useState([]);
     const [favorites, setIcon] = useState([]);
     const [cards, setCards] = useState(null);
-    const [user] = useGlobalState("user");
+    const user = getSessionState("user");
 
     async function getFavorites() {
         try {
@@ -38,7 +38,7 @@ function Favorites() {
 
     useEffect(() => {
         getFavorites();
-    }, []);
+    });
 
     // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {
@@ -56,7 +56,7 @@ function Favorites() {
     //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showFavoritesCard(candidateData, favorites));
-    }, [candidateData]);
+    }, [candidateData, favorites]);
 
     return (
         <ThemeProvider theme={theme}>

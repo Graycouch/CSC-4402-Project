@@ -1,4 +1,4 @@
-import { setGlobalState } from '../../globalValues';
+import { setSessionState } from '../../globalValues';
 import axios from 'axios';
 import "./Register.css"
 
@@ -16,7 +16,7 @@ export default function Register() {
             district_number: document.getElementById("district_number").value
         }).then((response) => {
             console.log(response);
-            setGlobalState("isRegistering", false);
+            setSessionState("isRegistering", false);
         }, (error) => {
             console.log(error);
         });
@@ -24,7 +24,9 @@ export default function Register() {
 
     const handleLoginClick = (e) => {
         e.preventDefault();
-        setGlobalState("isRegistering", false);
+        setSessionState("isRegistering", false);
+        setSessionState("isLoggedIn", true);
+        window.location.reload();
     }
 
     return (

@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
-import { useGlobalState } from '../../globalValues';
+import { getSessionState } from '../../globalValues';
 import { Card, CardContent, CardMedia, Modal, Typography, Box, Button } from "@mui/material";
 import { Markup } from 'interweave';
 import { IconButton } from '@mui/material';
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
-import Favorites from "../FavoritesPage/Favorites";
+
+/*
+    TODO:
+    - Add more design to the modal
+    - Add a button to the modal that links to the election page
+*/
 
 export default function CandidateCard(candidateData, favorites) {
   favorites = candidateData.favorites;
@@ -26,9 +31,9 @@ export default function CandidateCard(candidateData, favorites) {
   const [id] = useState(candidateData.ID);
   const [party] = useState(partyNames[candidateData.party_ID]);
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
-  const [user] = useGlobalState("user");
   const [open, setOpen] = useState(false);
   const [favoriteClicked, setFavoriteClicked] = useState(false); //isOpen
+  const user = getSessionState("user");
 
   const [bio] = useState(
     "<p><br/>" +
@@ -54,7 +59,7 @@ export default function CandidateCard(candidateData, favorites) {
 
   useEffect(() => {
     getFavorites();
-  }, []);
+  });
 
   async function getFavorites() {
     try {
@@ -103,13 +108,18 @@ export default function CandidateCard(candidateData, favorites) {
     setOpen(false);
   };
 
+  const handleElectionClick = () => {
+    // replace this with the appropriate URL for your election page
+    window.location.href = "/elections";
+  };
+
   const modalContent = (
     <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
       <Typography variant="h4">{candidate}</Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>{party}</Typography>
       <CardMedia
         component="img"
-        height="400"
+        height="300"
         width="200"
         image={img}
         alt="Candidate Image"
@@ -117,7 +127,7 @@ export default function CandidateCard(candidateData, favorites) {
       />
       <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button style={{ bottom: -20, left: '38%' }} /*onClick={election page}*/>Vote Now</Button>
+        <Button style={{ bottom: -20, left: '38%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
       {/* Add more details here */}
     </Box>
@@ -145,7 +155,7 @@ export default function CandidateCard(candidateData, favorites) {
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
-          <Button style={{ bottom: 0, left: '53%' }} onClick={handleOpen}>Learn More</Button>
+          <Button style={{ bottom: 10, left: '53%' }} onClick={handleOpen}>Learn More</Button>
         </CardContent>
       </Card>
       <Modal

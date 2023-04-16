@@ -1,4 +1,4 @@
-import { setGlobalState } from '../../globalValues';
+import { setSessionState } from '../../globalValues';
 import axios from "axios";
 import "./Login.css";
 
@@ -10,14 +10,13 @@ export default function Login() {
             const user = await axios.get("http://localhost:8080/voter/get/" + ID);
 
             if (user.data[0] !== undefined) {
-                setGlobalState("user", user.data[0]);
-                console.log(user.data[0]);
+                setSessionState('user', user.data[0]);
 
                 const partyIDs = await axios.get("http://localhost:8080/party");
-                setGlobalState("partyIDs", partyIDs.data);
-                console.log(partyIDs.data);
+                setSessionState('partyIDs', partyIDs.data);
 
-                setGlobalState("isLoggedIn", true);
+                setSessionState('isLoggedIn', true);
+                window.location.reload();
             } else {
                 console.log("Please enter a valid Voter ID");
             }
@@ -28,7 +27,7 @@ export default function Login() {
 
     const handleRegisterClick = (e) => {
         e.preventDefault();
-        setGlobalState("isRegistering", true);
+        setSessionState("isRegistering", true);
     }
 
     return (
@@ -52,9 +51,9 @@ export default function Login() {
                                 {"Create a New Account"}
                             </div>
                         </button>
-
                     </form>
                 </div>
+
             </div>
         </div>
     )

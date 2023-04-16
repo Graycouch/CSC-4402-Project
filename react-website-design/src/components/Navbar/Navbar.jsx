@@ -1,3 +1,4 @@
+import { clearSessionState } from '../../globalValues';
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,6 +13,12 @@ import Favorites from '../../pages/FavoritesPage/Favorites';
 import './Navbar.css'
 
 function NavbarComponent() {
+  
+  function handleLogout() {
+    clearSessionState();
+    window.location.reload();
+  }
+
   return (
     <>
       <Router>
@@ -31,7 +38,7 @@ function NavbarComponent() {
                   <Offcanvas.Body>
                     <Nav className="justify-content-end flex-grow-1 pe-3">
 
-                      <Nav.Link as={Link} to={"/"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                      <Nav.Link as={Link} to={"/elections"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Elections
                       </Nav.Link>
 
@@ -46,6 +53,10 @@ function NavbarComponent() {
                       <Nav.Link as={Link} to={"/profile"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         Profile
                       </Nav.Link>
+
+                      <Nav.Link onClick={handleLogout} as={Link} to={"/"} style={{ paddingLeft: "20px", paddingRight: "20px" }}>
+                        Logout
+                      </Nav.Link>              
 
                       <Form className="d-flex" style={{ paddingLeft: "20px", paddingRight: "20px" }}>
                         <Form.Control
@@ -67,7 +78,8 @@ function NavbarComponent() {
 
         <div>
           <Routes>
-          <Route path="/" element={<Elections />} />
+            <Route path="/" element={<Elections />} />
+            <Route path="/elections" element={<Elections />} />
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/profile" element={<Profile />} />
