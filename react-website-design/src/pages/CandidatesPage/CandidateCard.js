@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useGlobalState } from '../../globalValues';
+import { getSessionState } from '../../globalValues';
 import { Card, CardContent, CardMedia, Modal, Typography, Box, Button } from "@mui/material";
 import { Markup } from 'interweave';
 import { IconButton } from '@mui/material';
@@ -31,9 +31,9 @@ export default function CandidateCard(candidateData, favorites) {
   const [id] = useState(candidateData.ID);
   const [party] = useState(partyNames[candidateData.party_ID]);
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
-  const [user] = useGlobalState("user");
   const [open, setOpen] = useState(false);
   const [favoriteClicked, setFavoriteClicked] = useState(false); //isOpen
+  const user = getSessionState("user");
 
   const [bio] = useState(
     "<p><br/>" +

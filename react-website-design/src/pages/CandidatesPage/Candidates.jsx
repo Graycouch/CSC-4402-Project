@@ -1,4 +1,4 @@
-import { useGlobalState } from '../../globalValues';
+import { getSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
 import CandidateCard from './CandidateCard';
@@ -21,9 +21,9 @@ function Candidates() {
 
     // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const [cards, setCards] = useState(null);
-    const [user] = useGlobalState("user");
+    const user = getSessionState("user");
 
     async function getFavorites() {
         try {

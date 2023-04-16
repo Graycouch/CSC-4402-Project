@@ -1,13 +1,14 @@
-import { useGlobalState } from './globalValues';
+import { getSessionState } from './globalValues';
 import Navbar from './components/Navbar/Navbar';
 import Login from './pages/LoginPage/Login'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './pages/RegisterPage/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function App() {
-  const [isLoggedIn] = useGlobalState("isLoggedIn");
-  const [isRegistering] = useGlobalState("isRegistering");
-
+  const isLoggedIn = getSessionState('isLoggedIn');
+  const isRegistering = getSessionState('isRegistering');
+  
   return (
     <div>
       {isLoggedIn ? (

@@ -1,10 +1,9 @@
-import { useGlobalState, setGlobalState } from '../../globalValues';
+import { clearSessionState } from '../../globalValues';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  Navigate
+  Link
 } from "react-router-dom";
 import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import Profile from '../../pages/ProfilePage/Profile';
@@ -14,11 +13,10 @@ import Favorites from '../../pages/FavoritesPage/Favorites';
 import './Navbar.css'
 
 function NavbarComponent() {
-  const [isLoggedIn] = useGlobalState("isLoggedIn");
   
   function handleLogout() {
-    setGlobalState("isLoggedIn", false);
-    window.location.href = "/";
+    clearSessionState();
+    window.location.reload();
   }
 
   return (
@@ -80,7 +78,7 @@ function NavbarComponent() {
 
         <div>
           <Routes>
-            <Route path="/" element={<Navigate to={isLoggedIn ? "/elections" : "/"} />} />
+            <Route path="/" element={<Elections />} />
             <Route path="/elections" element={<Elections />} />
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />

@@ -1,12 +1,12 @@
-import { useGlobalState, setGlobalState } from '../../globalValues';
+import { getSessionState, setSessionState } from '../../globalValues';
 import React, { useState } from 'react';
 import "./Profile.css";
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBBtn, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
 import axios from 'axios';
 
 export default function Profile() {
-  const [user] = useGlobalState("user");
-  const [partyIDs] = useGlobalState("partyIDs");
+  const user = getSessionState("user");
+  const partyIDs = getSessionState("partyIDs");
   const [state, setState] = useState(user.state);
   const [district_number, setDistrictNumber] = useState(user.district_number);
   const [email, setEmail] = useState(user.email);
@@ -58,7 +58,7 @@ export default function Profile() {
       return partyID.party_name === party_name
     }).ID;
 
-    setGlobalState("user", {
+    setSessionState("user", {
       "ID": user.ID,
       "first_name": user.first_name,
       "last_name": user.last_name,
