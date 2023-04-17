@@ -7,14 +7,8 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
 
-/*
-    TODO:
-    - Add more design to the modal
-    - Add a button to the modal that links to the election page
-*/
-
-export default function CandidateCard(candidateData, favorites) {
-  favorites = candidateData.favorites;
+export default function CandidateCard(candidateData) {
+  let favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
 
   const partyNames = {
@@ -114,7 +108,7 @@ export default function CandidateCard(candidateData, favorites) {
   };
 
   const modalContent = (
-    <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
+    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
       <Typography variant="h4">{candidate}</Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>{party}</Typography>
       <CardMedia
@@ -127,15 +121,14 @@ export default function CandidateCard(candidateData, favorites) {
       />
       <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button style={{ bottom: -20, left: '38%' }} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, left: '35%'}} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
-      {/* Add more details here */}
     </Box>
   );
 
   return (
     <div>
-      <Card sx={{ width: '350px', height: '650px', backgroundColor: "grey.200", mb: 3, mt: 3 }}>
+      <Card sx={{ width: '350px', height: '650px', backgroundColor: 'grey.200', mb: 3, mt: 3, borderRadius: '10px' }}>
         <CardMedia
           component="img"
           height="400"
@@ -144,18 +137,21 @@ export default function CandidateCard(candidateData, favorites) {
           alt="Candidate Image"
         />
         <CardContent>
+
           <Typography variant="h5" component="div" textAlign="center">
             {candidate}
           </Typography>
           <Typography variant="p3" component="div" textAlign="center">
             {party}
           </Typography>
+
           <Markup className="bio" content={bio} />
-          <IconButton color="primary" style={{ right: '3%', bottom: 9 }} onClick={favoriteClick}>
+
+          <Button variant="outlined" style={{ right: '2%', bottom: 12 }} onClick={handleOpen}>Learn More</Button>
+          <IconButton color="primary" style={{ bottom: 12, left: '48%' }} onClick={favoriteClick}>
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
-          <Button style={{ bottom: 10, left: '53%' }} onClick={handleOpen}>Learn More</Button>
         </CardContent>
       </Card>
       <Modal
