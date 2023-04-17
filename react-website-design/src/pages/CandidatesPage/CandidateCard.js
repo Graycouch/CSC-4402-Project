@@ -30,7 +30,7 @@ export default function CandidateCard(candidateData) {
   const user = getSessionState("user");
 
   const [bio] = useState(
-    "<p><br/>" +
+    "<p>" +
     "<strong>ID:</strong> " + id + "<br />" +
     "<strong>State:</strong> " + (candidateData.state || "N/A") + "<br />" +
     "<strong>District:</strong> " + candidateData.district_number + "<br />" +
@@ -121,14 +121,14 @@ export default function CandidateCard(candidateData) {
       />
       <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" style={{ bottom: -20, left: '35%'}} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
     </Box>
   );
 
   return (
     <div>
-      <Card sx={{ width: '350px', height: '650px', backgroundColor: 'grey.200', mb: 3, mt: 3, borderRadius: '10px' }}>
+      <Card sx={{ width: '350px', height: '633px', backgroundColor: 'grey.200', mb: 3, mt: 3, borderRadius: '10px' }}>
         <CardMedia
           component="img"
           height="400"
@@ -146,9 +146,8 @@ export default function CandidateCard(candidateData) {
           </Typography>
 
           <Markup className="bio" content={bio} />
-
-          <Button variant="outlined" style={{ right: '2%', bottom: 12 }} onClick={handleOpen}>Learn More</Button>
-          <IconButton color="primary" style={{ bottom: 12, left: '48%' }} onClick={favoriteClick}>
+          <Button variant="outlined" style={{ right: '2%', bottom: 8 }} onClick={handleOpen}>Learn More</Button>
+          <IconButton color="primary" style={{ left: '48%', bottom: 8 }} onClick={favoriteClick}>
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
