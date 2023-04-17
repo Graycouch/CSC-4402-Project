@@ -39,7 +39,6 @@ export default function Register() {
     const handleLoginClick = (e) => {
         e.preventDefault();
         setSessionState("isRegistering", false);
-        setSessionState("isLoggedIn", true);
         window.location.reload();
     }
 
