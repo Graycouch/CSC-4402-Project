@@ -8,6 +8,7 @@ import { Button, Container, Form, Nav, Navbar, Offcanvas } from 'react-bootstrap
 import Profile from '../../pages/ProfilePage/Profile';
 import Candidates from '../../pages/CandidatesPage/Candidates';
 import Elections from '../../pages/ElectionsPage/Elections';
+import ElectionCandidates from '../../pages/ElectionsPage/ElectionCandidates';
 import Favorites from '../../pages/FavoritesPage/Favorites';
 import './Navbar.css'
 
@@ -68,6 +69,7 @@ function NavbarComponent() {
         <div>
           <Routes>
           <Route path="/" element={<Elections />} />
+            <Route path="/electioncandidates" element={<ElectionCandidates />} />
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/profile" element={<Profile />} />

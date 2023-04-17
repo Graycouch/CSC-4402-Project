@@ -2,6 +2,7 @@ import { useGlobalState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ElectionCard from './ElectionCard';
+import CandidateCard from '../CandidatesPage/CandidateCard';
 import { createTheme , Grid, ThemeProvider} from '@mui/material';
 import { red, blue } from '@mui/material/colors';
 import './Elections.css';
@@ -51,6 +52,7 @@ const theme = createTheme({
     useEffect(() => {
         setCards(renderElections(electionData));
     }, [electionData]);
+
 
     return (
         <ThemeProvider theme={theme}>

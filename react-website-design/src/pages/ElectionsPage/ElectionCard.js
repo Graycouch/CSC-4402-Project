@@ -1,5 +1,6 @@
 import { useGlobalState } from '../../globalValues'
 import { useState } from "react";
+import {Routes, Route, useNavigate, createSearchParams} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import Card from '@mui/material/Card';
@@ -11,9 +12,8 @@ import './Elections.css';
 
 export default function ElectionCard(electionData){
     electionData = electionData.electionData;
-
+  
     const [user] = useGlobalState("user");
-
     const[ID] = useState(electionData.ID);
     const [office] = useState(electionData.office);
     const [election_date] = useState(electionData.election_date);
@@ -21,16 +21,11 @@ export default function ElectionCard(electionData){
     const [description] = useState(electionData.description);
     const[candidates] = useState(electionData.candidates);
 
-    async function getCandidates() {
-      try {
-          const res = await axios.get(`http://localhost:8080/election/get-candidates/${ID}`);
-          console.log(res.data);
-      }
-      catch (error) {
-          console.log(error);
-      }
-  }
-
+    const navigate = useNavigate();
+  const someEventHandler = (id) => {
+    navigate({ pathname:'/electioncandidates',
+    search: createSearchParams({ id: ID }).toString()});
+};
 
     return (
         <Card sx={{ minWidth: 275 }}>
@@ -49,7 +44,7 @@ export default function ElectionCard(electionData){
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={getCandidates}>See Candidates</Button>
+            <Button size="small" onClick={someEventHandler}>See Candidates</Button>
           </CardActions>
         </Card>
       );
