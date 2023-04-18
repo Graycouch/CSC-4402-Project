@@ -115,9 +115,9 @@ export default function CandidateCard(candidateData) {
   };
 
   const modalContent = (
-    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: '#fcf9e8', boxShadow: 24, p: 4, overflowY: 'auto' }}>
-      <Typography variant="h4" color="black" >{candidate}</Typography>
-      <Typography variant="h6" color="black" gutterBottom>{party}</Typography>
+    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: '#2b3036', boxShadow: 24, p: 4, overflowY: 'auto' }}>
+      <Typography variant="h4" color="whitesmoke" >{candidate}</Typography>
+      <Typography variant="h6" color="whitesmoke" gutterBottom>{party}</Typography>
       <CardMedia className="candidateImg"
         component="img"
         height="300"
@@ -126,7 +126,7 @@ export default function CandidateCard(candidateData) {
         alt="Candidate Image"
         sx={{ mb: 2 }}
       />
-      <Typography variant="body1" color="black" sx={{ mb: 2 }}>
+      <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
         <Button variant="contained" className="buttons" style={{ border: '1px solid #f00', bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
@@ -135,10 +135,9 @@ export default function CandidateCard(candidateData) {
 
   return (
     <div>
-      <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#fcf9e8' }}>
+      <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#2b3036' }}>
         <CardMedia 
           className="candidateImg"
-          /*border="10px solid black"*/
           component="img"
           height="400"
           width="200"
@@ -146,13 +145,13 @@ export default function CandidateCard(candidateData) {
           alt="Candidate Image"
         />
         <CardContent>
-          <Typography className="title" variant="h5" component="div" color="black" textAlign="center">
+          <Typography variant="h5" component="div" color="whitesmoke" textAlign="center">
             {candidate}
           </Typography>
-          <Typography className="title" variant="p3" component="p" color="black" textAlign="center">
+          <Typography variant="p3" component="p" color="whitesmoke" textAlign="center">
             {party}
           </Typography>
-          <Markup className="bio" color="black" content={bio} />
+          <Markup className="bio" color="whitesmoke" content={bio} />
           <Button variant="contained" className="buttons" style={{ border: '1px solid #f00', right: '2%' }} onClick={handleOpen}>Learn More</Button>
           <IconButton color="primary" style={{ left: '48%' }} onClick={favoriteClick}>
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />

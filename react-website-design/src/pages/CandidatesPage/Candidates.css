@@ -18,11 +18,17 @@ html, body {
 .bio {
     text-align: left;
     font-size: 1rem;
-    color: black;
+    color: whitesmoke;
 }
 
 .details td {
     padding-left: 10px;
+}
+
+.grids {
+    padding-bottom: 40px;
+    width: auto;
+    height: auto;
 }
 
 /* .card {
