@@ -55,7 +55,7 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards(candidateData, favorites) {
         return (
-            <Grid container spacing={12} className={'candidate-cards'}>
+            <Grid container spacing={12} className={'candidate-cards'} >
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} favorites={favorites} />
@@ -77,8 +77,10 @@ function Candidates() {
                     <h1 style={{ textAlign: 'center' }}>Candidates</h1>
                 </div>
                 <br></br>
-                <div className="card-container">
+                <div className='grids'>
+                <div className="card-container" >
                     {cards}
+                </div>
                 </div>
             </div>
         </ThemeProvider>
