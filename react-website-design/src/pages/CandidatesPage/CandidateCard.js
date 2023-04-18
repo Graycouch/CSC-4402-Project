@@ -7,17 +7,11 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
 
-/*
-    TODO:
-    - Add more design to the modal
-    - Add a button to the modal that links to the election page
-*/
-
-export default function CandidateCard(candidateData, favorites) {
-  favorites = candidateData.favorites;
+export default function CandidateCard(candidateData) {
+  let favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
 
-    const partyNames = {
+  const partyNames = {
     1: "Republican",
     2: "Democrat",
     3: "Libertarian",
@@ -36,7 +30,7 @@ export default function CandidateCard(candidateData, favorites) {
   const user = getSessionState("user");
 
   const [bio] = useState(
-    "<p><br/>" +
+    "<p>" +
     "<strong>ID:</strong> " + id + "<br />" +
     "<strong>State:</strong> " + (candidateData.state || "N/A") + "<br />" +
     "<strong>District:</strong> " + candidateData.district_number + "<br />" +
@@ -59,7 +53,7 @@ export default function CandidateCard(candidateData, favorites) {
 
   useEffect(() => {
     getFavorites();
-  });
+  }, []);
 
   async function getFavorites() {
     try {
@@ -68,9 +62,13 @@ export default function CandidateCard(candidateData, favorites) {
       });
 
       if (isFavorite !== undefined) {
-        setFavoriteClicked(false);
+        setFavoriteClicked(true);
         document.getElementById("favorite" + candidateData.ID).style.display = "block";
         document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
+      } else {
+        setFavoriteClicked(false);
+        document.getElementById("favorite" + candidateData.ID).style.display = "none";
+        document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
       }
     }
     catch (error) {
@@ -79,21 +77,21 @@ export default function CandidateCard(candidateData, favorites) {
   }
 
   const favoriteClick = async () => {
-    setFavoriteClicked(!favoriteClicked);
-
     if (!favoriteClicked) {
-      document.getElementById("favorite" + candidateData.ID).style.display = "none";
-      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
-
-      await axios.post('http://localhost:8080/favorites/delete', {
-        voter_ID: user.ID,
-        candidate_ID: candidateData.ID
-      });
-    } else {
+      setFavoriteClicked(!favoriteClicked);
       document.getElementById("favorite" + candidateData.ID).style.display = "block";
       document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
 
       await axios.post('http://localhost:8080/favorites/create', {
+        voter_ID: user.ID,
+        candidate_ID: candidateData.ID
+      });
+    } else {
+      setFavoriteClicked(!favoriteClicked);
+      document.getElementById("favorite" + candidateData.ID).style.display = "none";
+      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
+
+      await axios.post('http://localhost:8080/favorites/delete', {
         voter_ID: user.ID,
         candidate_ID: candidateData.ID
       });
@@ -114,7 +112,7 @@ export default function CandidateCard(candidateData, favorites) {
   };
 
   const modalContent = (
-    <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
+    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
       <Typography variant="h4">{candidate}</Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>{party}</Typography>
       <CardMedia
@@ -127,15 +125,14 @@ export default function CandidateCard(candidateData, favorites) {
       />
       <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button style={{ bottom: -20, left: '38%' }} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
-      {/* Add more details here */}
     </Box>
   );
 
   return (
     <div>
-      <Card sx={{ width: '350px', height: '650px', backgroundColor: "grey.200", mb: 3, mt: 3 }}>
+      <Card sx={{ width: '350px', height: '633px', backgroundColor: 'grey.200', mb: 3, mt: 3, borderRadius: '10px' }}>
         <CardMedia
           component="img"
           height="400"
@@ -144,18 +141,20 @@ export default function CandidateCard(candidateData, favorites) {
           alt="Candidate Image"
         />
         <CardContent>
+
           <Typography variant="h5" component="div" textAlign="center">
             {candidate}
           </Typography>
           <Typography variant="p3" component="div" textAlign="center">
             {party}
           </Typography>
+
           <Markup className="bio" content={bio} />
-          <IconButton color="primary" style={{ right: '3%', bottom: 9 }} onClick={favoriteClick}>
+          <Button variant="outlined" style={{ right: '2%', bottom: 8 }} onClick={handleOpen}>Learn More</Button>
+          <IconButton color="primary" style={{ left: '48%', bottom: 8 }} onClick={favoriteClick}>
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
-          <Button style={{ bottom: 10, left: '53%' }} onClick={handleOpen}>Learn More</Button>
         </CardContent>
       </Card>
       <Modal

@@ -50,7 +50,7 @@ function Candidates() {
     useEffect(() => {
         getFavorites();
         getCandidates();
-    });
+    }, []);
 
     // Function to render cards
     function showCandidateCards(candidateData, favorites) {
