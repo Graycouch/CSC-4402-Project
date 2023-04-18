@@ -7,14 +7,6 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
 
-/*
-    TODO:
-      - Make all modals the same size.
-      - See if you can make the modal scrollable.
-      - Add a darker shadow behind the modal.
-      - See if you can make it nicer looking.
-*/
-
 export default function CandidateCard(candidateData) {
   let favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
@@ -119,10 +111,10 @@ export default function CandidateCard(candidateData) {
   };
 
   const modalContent = (
-    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: '#fcf9e8', boxShadow: 24, p: 4, overflowY: 'auto' }}>
-      <Typography variant="h4" color="black" >{candidate}</Typography>
-      <Typography variant="h6" color="black" gutterBottom>{party}</Typography>
-      <CardMedia className="candidateImg"
+    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, overflowY: 'auto' }}>
+      <Typography variant="h4">{candidate}</Typography>
+      <Typography variant="h6" color="text.secondary" gutterBottom>{party}</Typography>
+      <CardMedia
         component="img"
         height="300"
         width="200"
@@ -130,19 +122,17 @@ export default function CandidateCard(candidateData) {
         alt="Candidate Image"
         sx={{ mb: 2 }}
       />
-      <Typography variant="body1" color="black" sx={{ mb: 2 }}>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" className="buttons" style={{ border: '1px solid #f00', bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
     </Box>
   );
 
   return (
     <div>
-      <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#fcf9e8' }}>
-        <CardMedia 
-          className="candidateImg"
-          /*border="10px solid black"*/
+      <Card sx={{ width: '350px', height: '633px', backgroundColor: 'grey.200', mb: 3, mt: 3, borderRadius: '10px' }}>
+        <CardMedia
           component="img"
           height="400"
           width="200"
@@ -150,15 +140,17 @@ export default function CandidateCard(candidateData) {
           alt="Candidate Image"
         />
         <CardContent>
-          <Typography className="title" variant="h5" component="div" color="black" textAlign="center">
+
+          <Typography variant="h5" component="div" textAlign="center">
             {candidate}
           </Typography>
-          <Typography className="title" variant="p3" component="p" color="black" textAlign="center">
+          <Typography variant="p3" component="div" textAlign="center">
             {party}
           </Typography>
-          <Markup className="bio" color="black" content={bio} />
-          <Button variant="contained" className="buttons" style={{ border: '1px solid #f00', right: '2%' }} onClick={handleOpen}>Learn More</Button>
-          <IconButton color="primary" style={{ left: '48%' }} onClick={favoriteClick}>
+
+          <Markup className="bio" content={bio} />
+          <Button variant="outlined" style={{ right: '2%', bottom: 8 }} onClick={handleOpen}>Learn More</Button>
+          <IconButton color="primary" style={{ left: '48%', bottom: 8 }} onClick={favoriteClick}>
             <FavoriteBorder id={"favoriteBorder" + candidateData.ID} fontSize="large" />
             <Favorite style={{ display: "none" }} id={"favorite" + candidateData.ID} fontSize="large" />
           </IconButton>
