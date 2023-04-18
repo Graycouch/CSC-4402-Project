@@ -26,7 +26,6 @@ html, body {
 }
 
 .card {
-    position: relative;
     padding: 20px;
     margin-bottom: 3px;
     margin-top: 3px;
@@ -36,9 +35,7 @@ html, body {
     box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
 }
 
-/* .candidateImg {
-    border: 10px solid transparent;
-    background-clip: padding-box;
-    background-image: linear-gradient(to bottom, #ff0000, #ffffff, #0000ff);
-} */
+.candidateImg {
+    border: 5px solid rgb(255, 85, 85);
+}
   
