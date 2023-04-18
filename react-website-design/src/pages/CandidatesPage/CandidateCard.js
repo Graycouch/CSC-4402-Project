@@ -7,6 +7,14 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
 
+/*
+    TODO:
+      - Make all modals the same size.
+      - See if you can make the modal scrollable.
+      - Add a darker shadow behind the modal.
+      - See if you can make it nicer looking.
+*/
+
 export default function CandidateCard(candidateData) {
   let favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
