@@ -1,16 +1,9 @@
-import { useGlobalState } from '../../globalValues';
+import { getSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
 import CandidateCard from './CandidateCard';
 import axios from 'axios';
 import './Candidates.css';
-
-/*
-    TODO:
-    - Create Dropdown for each candidate card to show info on their current election (total votes, etc.)
-    - Create a learn more button that links to the candidate's profile page (which can be instantiated with the candidate's ID)
-    - Create a vote button that links to the candidate's election page 
-*/
 
 function Candidates() {
     // Creates theme for Material UI components
@@ -28,9 +21,9 @@ function Candidates() {
 
     // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const [cards, setCards] = useState(null);
-    const [user] = useGlobalState("user");
+    const user = getSessionState("user");
 
     async function getFavorites() {
         try {
@@ -57,7 +50,7 @@ function Candidates() {
     useEffect(() => {
         getFavorites();
         getCandidates();
-    }, []);
+    });
 
     // Function to render cards
     function showCandidateCards(candidateData, favorites) {
@@ -75,7 +68,7 @@ function Candidates() {
     //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showCandidateCards(candidateData, favorites));
-    }, [candidateData]);
+    }, [candidateData, favorites]);
 
     return (
         <ThemeProvider theme={theme}>
