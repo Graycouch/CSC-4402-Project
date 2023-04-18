@@ -128,7 +128,9 @@ export default function CandidateCard(candidateData) {
   return (
     <div>
       <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#2b3036' }}>
-        <CardMedia className="candidateImg"
+        <CardMedia 
+          className="candidateImg"
+          /*border="10px solid black"*/
           component="img"
           height="400"
           width="200"
