@@ -61,7 +61,7 @@ export default function CandidateCard(candidateData) {
 
   useEffect(() => {
     getFavorites();
-  });
+  }, []);
 
   async function getFavorites() {
     try {
