@@ -1,12 +1,12 @@
-import { getSessionState } from '../../globalValues';
+import { getSessionState, setSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
-import CandidateCard from './CandidateCard';
+import CandidateCard from '../CandidatesPage/CandidateCard';
 import axios from 'axios';
-import './Candidates.css';
+import './Elections.css';
 
-function Candidates() {
-    // Creates theme for Material UI components
+function ElectionCandidates() {
     const theme = createTheme({
         palette: {
             primary: {
@@ -19,11 +19,12 @@ function Candidates() {
         },
     });
 
-    // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
-    const [favorites, setFavorites] = useState([]);
     const [cards, setCards] = useState(null);
     const user = getSessionState("user");
+    const [searchparams] = useSearchParams();
+    const ID = searchparams.get("id");
+    const [favorites, setFavorites] = useState([]);
 
     async function getFavorites() {
         try {
@@ -33,14 +34,12 @@ function Candidates() {
         catch (error) {
             console.log(error);
         }
-      }
+    }
 
-    /* Don't know how to properly use database functions */
     async function getCandidates() {
         try {
-            const res = await axios.get('http://localhost:8080/candidate');
+            const res = await axios.get(`http://localhost:8080/election/get-candidates/${ID}`);
             setCandidates(res.data);
-
         }
         catch (error) {
             console.log(error);
@@ -55,7 +54,7 @@ function Candidates() {
     // Function to render cards
     function showCandidateCards(candidateData, favorites) {
         return (
-            <Grid container spacing={12} className={'candidate-cards'} >
+            <Grid container spacing={12} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} favorites={favorites} />
@@ -74,17 +73,15 @@ function Candidates() {
         <ThemeProvider theme={theme}>
             <div className="Candidates">
                 <div>
-                    <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+                    <h1 style={{ textAlign: 'center' }}>Election Candidates</h1>
                 </div>
                 <br></br>
-                <div className='grids'>
-                <div className="card-container" >
+                <div className="card-container">
                     {cards}
-                </div>
                 </div>
             </div>
         </ThemeProvider>
     )
 }
 
-export default Candidates;
+export default ElectionCandidates;

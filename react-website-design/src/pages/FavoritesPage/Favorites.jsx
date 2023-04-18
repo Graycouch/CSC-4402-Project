@@ -19,7 +19,6 @@ function Favorites() {
         },
     });
 
-    // Global variables for maintaining candidate data and to render cards
     const [candidateData, setFavorites] = useState([]);
     const [favorites, setIcon] = useState([]);
     const [cards, setCards] = useState(null);
@@ -40,10 +39,9 @@ function Favorites() {
         getFavorites();
     }, []);
 
-    // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            <Grid container spacing={10} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} favorites={favorites} />
@@ -53,12 +51,11 @@ function Favorites() {
         );
     }
 
-    //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showFavoritesCard(candidateData, favorites));
     }, [candidateData, favorites]);
 
-    return (
+    return favorites.length > 0 ? (
         <ThemeProvider theme={theme}>
             <div className="Candidates">
                 <div>
@@ -70,6 +67,26 @@ function Favorites() {
                 </div>
             </div>
         </ThemeProvider>
+    ) : (
+        <div>
+            <ThemeProvider theme={theme}>
+                <div className="Candidates">
+                    <div>
+                        <h1 style={{ textAlign: 'center' }}>Favorites</h1>
+                    </div>
+                    <div style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'absolute', top: '45%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                        <text style={{ fontSize: 30, fontWeight: '400', color: 'gray' }}>
+                            You currently don't have any favorites, go to the Candidates page to add some!
+                        </text>
+                    </div>
+                    <div style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'absolute', top: '55%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                        <text style={{ fontSize: 50, fontWeight: '400', color: 'gray' }}>
+                            (╯°□°)╯︵ ┻━┻
+                        </text>
+                    </div>
+                </div>
+            </ThemeProvider>
+        </div>
     )
 }
 

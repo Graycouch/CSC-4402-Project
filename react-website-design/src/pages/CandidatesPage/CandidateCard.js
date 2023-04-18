@@ -7,14 +7,6 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import axios from 'axios';
 import './Candidates.css';
 
-/*
-    TODO:
-      - Make all modals the same size.
-      - See if you can make the modal scrollable.
-      - Add a darker shadow behind the modal.
-      - See if you can make it nicer looking.
-*/
-
 export default function CandidateCard(candidateData) {
   let favorites = candidateData.favorites;
   candidateData = candidateData.candidateData;
@@ -34,7 +26,7 @@ export default function CandidateCard(candidateData) {
   const [party] = useState(partyNames[candidateData.party_ID]);
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
   const [open, setOpen] = useState(false);
-  const [favoriteClicked, setFavoriteClicked] = useState(false); //isOpen
+  const [favoriteClicked, setFavoriteClicked] = useState(false);
   const user = getSessionState("user");
 
   const [bio] = useState(
@@ -70,9 +62,13 @@ export default function CandidateCard(candidateData) {
       });
 
       if (isFavorite !== undefined) {
-        setFavoriteClicked(false);
+        setFavoriteClicked(true);
         document.getElementById("favorite" + candidateData.ID).style.display = "block";
         document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
+      } else {
+        setFavoriteClicked(false);
+        document.getElementById("favorite" + candidateData.ID).style.display = "none";
+        document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
       }
     }
     catch (error) {
@@ -81,21 +77,21 @@ export default function CandidateCard(candidateData) {
   }
 
   const favoriteClick = async () => {
-    setFavoriteClicked(!favoriteClicked);
-
     if (!favoriteClicked) {
-      document.getElementById("favorite" + candidateData.ID).style.display = "none";
-      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
-
-      await axios.post('http://localhost:8080/favorites/delete', {
-        voter_ID: user.ID,
-        candidate_ID: candidateData.ID
-      });
-    } else {
+      setFavoriteClicked(!favoriteClicked);
       document.getElementById("favorite" + candidateData.ID).style.display = "block";
       document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
 
       await axios.post('http://localhost:8080/favorites/create', {
+        voter_ID: user.ID,
+        candidate_ID: candidateData.ID
+      });
+    } else {
+      setFavoriteClicked(!favoriteClicked);
+      document.getElementById("favorite" + candidateData.ID).style.display = "none";
+      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
+
+      await axios.post('http://localhost:8080/favorites/delete', {
         voter_ID: user.ID,
         candidate_ID: candidateData.ID
       });
@@ -128,7 +124,7 @@ export default function CandidateCard(candidateData) {
       />
       <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" className="buttons" style={{ border: '1px solid #f00', bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
       </Typography>
     </Box>
   );
