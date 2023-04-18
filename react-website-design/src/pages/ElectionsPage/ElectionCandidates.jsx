@@ -6,15 +6,7 @@ import CandidateCard from '../CandidatesPage/CandidateCard';
 import axios from 'axios';
 import './Elections.css';
 
-/*
-    TODO:
-    - Create Dropdown for each candidate card to show info on their current election (total votes, etc.)
-    - Create a learn more button that links to the candidate's profile page (which can be instantiated with the candidate's ID)
-    - Create a vote button that links to the candidate's election page 
-*/
-
 function ElectionCandidates() {
-    // Creates theme for Material UI components
     const theme = createTheme({
         palette: {
             primary: {
@@ -27,7 +19,6 @@ function ElectionCandidates() {
         },
     });
 
-    // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
     const user = getSessionState("user");
@@ -35,20 +26,20 @@ function ElectionCandidates() {
     const ID = searchparams.get("id");
     const [favorites, setFavorites] = useState([]);
 
-    async function getCandidates() {
+    async function getFavorites() {
         try {
-            const res = await axios.get(`http://localhost:8080/election/get-candidates/${ID}`);
-            setCandidates(res.data);
+            const res = await axios.get(`http://localhost:8080/favorites/get/${user.ID}`);
+            setFavorites(res.data);
         }
         catch (error) {
             console.log(error);
         }
     }
 
-    async function getFavorites() {
+    async function getCandidates() {
         try {
-            const res = await axios.get(`http://localhost:8080/favorites/get/${user.ID}`);
-            setFavorites(res.data);
+            const res = await axios.get(`http://localhost:8080/election/get-candidates/${ID}`);
+            setCandidates(res.data);
         }
         catch (error) {
             console.log(error);

@@ -13,7 +13,6 @@ import './Elections.css';
 export default function ElectionCard(electionData) {
   electionData = electionData.electionData;
 
-  const user = getSessionState("user");
   const [ID] = useState(electionData.ID);
   const [office] = useState(electionData.office);
   const [election_date] = useState(electionData.election_date);
@@ -22,7 +21,7 @@ export default function ElectionCard(electionData) {
   const [candidates] = useState(electionData.candidates);
 
   const navigate = useNavigate();
-  const someEventHandler = () => {
+  const onSeeCandidatesClick = () => {
     navigate({
       pathname: '/electioncandidates',
       search: createSearchParams({ id: ID }).toString()
@@ -46,10 +45,9 @@ export default function ElectionCard(electionData) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant='outlined' size="small" onClick={someEventHandler}>See Candidates</Button>
+        <Button variant='outlined' size="small" onClick={onSeeCandidatesClick}>See Candidates</Button>
       </CardActions>
     </Card>
   );
 
 };
-

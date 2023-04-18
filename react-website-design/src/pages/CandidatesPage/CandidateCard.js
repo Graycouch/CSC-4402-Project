@@ -26,7 +26,7 @@ export default function CandidateCard(candidateData) {
   const [party] = useState(partyNames[candidateData.party_ID]);
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
   const [open, setOpen] = useState(false);
-  const [favoriteClicked, setFavoriteClicked] = useState(false); //isOpen
+  const [favoriteClicked, setFavoriteClicked] = useState(false);
   const user = getSessionState("user");
 
   const [bio] = useState(
@@ -107,7 +107,6 @@ export default function CandidateCard(candidateData) {
   };
 
   const handleElectionClick = () => {
-    // replace this with the appropriate URL for your election page
     window.location.href = "/elections";
   };
 

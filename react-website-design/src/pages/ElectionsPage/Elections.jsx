@@ -53,7 +53,6 @@ export default function Elections() {
         setCards(renderElections(electionData));
     }, [electionData]);
 
-
     return (
         <ThemeProvider theme={theme}>
             <div className="Elections">
