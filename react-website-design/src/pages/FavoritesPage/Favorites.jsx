@@ -43,7 +43,7 @@ function Favorites() {
     // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            <Grid container spacing={10} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} favorites={favorites} />

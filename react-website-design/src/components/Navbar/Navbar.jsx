@@ -84,6 +84,7 @@ function NavbarComponent() {
             <Route path="/candidates" element={<Candidates />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/electionCandidates" element={<ElectionCandidates />} />
           </Routes>
         </div>
       </Router>

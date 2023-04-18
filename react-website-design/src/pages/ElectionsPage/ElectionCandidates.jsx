@@ -1,4 +1,4 @@
-import { useGlobalState } from '../../globalValues';
+import { getSessionState, setSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Grid, createTheme, ThemeProvider } from "@mui/material";
@@ -30,7 +30,7 @@ function ElectionCandidates() {
     // Global variables for maintaining candidate data and to render cards
     const [candidateData, setCandidates] = useState([]);
     const [cards, setCards] = useState(null);
-    const [user] = useGlobalState("user");
+    const user = getSessionState("user");
     const [searchparams] = useSearchParams();
     const ID = searchparams.get("id");
     /* Don't know how to properly use database functions */
@@ -71,7 +71,7 @@ function ElectionCandidates() {
         <ThemeProvider theme={theme}>
             <div className="Candidates">
                 <div>
-                    <h1 style={{ textAlign: 'center' }}>Candidates</h1>
+                    <h1 style={{ textAlign: 'center' }}>Election Candidates</h1>
                 </div>
                 <br></br>
                 <div className="card-container">

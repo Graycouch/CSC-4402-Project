@@ -1,26 +1,26 @@
-import { useGlobalState } from '../../globalValues';
+import { getSessionState, setSessionState } from '../../globalValues';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ElectionCard from './ElectionCard';
 import CandidateCard from '../CandidatesPage/CandidateCard';
-import { createTheme , Grid, ThemeProvider} from '@mui/material';
+import { createTheme, Grid, ThemeProvider } from '@mui/material';
 import { red, blue } from '@mui/material/colors';
 import './Elections.css';
 
 export default function Elections() {
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: blue[500],
-    },
-    secondary: {
-      main: red[500],
-    },
-  },
-});
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: blue[500],
+            },
+            secondary: {
+                main: red[500],
+            },
+        },
+    });
 
     const [electionData, setElections] = useState([]);
-    const [user] = useGlobalState("user");
+    const user = getSessionState("user");
     const [cards, setCards] = useState(null);
 
     async function getElections() {
@@ -57,6 +57,10 @@ const theme = createTheme({
     return (
         <ThemeProvider theme={theme}>
             <div className="Elections">
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>Elections</h1>
+                </div>
+                <br></br>
                 <div className="card-container">
                     {cards}
                 </div>
