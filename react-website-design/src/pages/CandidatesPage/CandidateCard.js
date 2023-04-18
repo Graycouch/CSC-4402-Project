@@ -53,7 +53,7 @@ export default function CandidateCard(candidateData) {
 
   useEffect(() => {
     getFavorites();
-  });
+  }, []);
 
   async function getFavorites() {
     try {
@@ -62,9 +62,13 @@ export default function CandidateCard(candidateData) {
       });
 
       if (isFavorite !== undefined) {
-        setFavoriteClicked(false);
+        setFavoriteClicked(true);
         document.getElementById("favorite" + candidateData.ID).style.display = "block";
         document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
+      } else {
+        setFavoriteClicked(false);
+        document.getElementById("favorite" + candidateData.ID).style.display = "none";
+        document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
       }
     }
     catch (error) {
@@ -73,21 +77,21 @@ export default function CandidateCard(candidateData) {
   }
 
   const favoriteClick = async () => {
-    setFavoriteClicked(!favoriteClicked);
-
     if (!favoriteClicked) {
-      document.getElementById("favorite" + candidateData.ID).style.display = "none";
-      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
-
-      await axios.post('http://localhost:8080/favorites/delete', {
-        voter_ID: user.ID,
-        candidate_ID: candidateData.ID
-      });
-    } else {
+      setFavoriteClicked(!favoriteClicked);
       document.getElementById("favorite" + candidateData.ID).style.display = "block";
       document.getElementById("favoriteBorder" + candidateData.ID).style.display = "none";
 
       await axios.post('http://localhost:8080/favorites/create', {
+        voter_ID: user.ID,
+        candidate_ID: candidateData.ID
+      });
+    } else {
+      setFavoriteClicked(!favoriteClicked);
+      document.getElementById("favorite" + candidateData.ID).style.display = "none";
+      document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
+
+      await axios.post('http://localhost:8080/favorites/delete', {
         voter_ID: user.ID,
         candidate_ID: candidateData.ID
       });

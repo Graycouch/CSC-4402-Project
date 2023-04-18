@@ -58,7 +58,7 @@ function Favorites() {
         setCards(showFavoritesCard(candidateData, favorites));
     }, [candidateData, favorites]);
 
-    return (
+    return favorites.length > 0 ? (
         <ThemeProvider theme={theme}>
             <div className="Candidates">
                 <div>
@@ -70,6 +70,26 @@ function Favorites() {
                 </div>
             </div>
         </ThemeProvider>
+    ) : (
+        <div>
+            <ThemeProvider theme={theme}>
+                <div className="Candidates">
+                    <div>
+                        <h1 style={{ textAlign: 'center' }}>Favorites</h1>
+                    </div>
+                    <div style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'absolute', top: '45%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                        <text style={{ fontSize: 30, fontWeight: '400', color: 'gray' }}>
+                            You currently don't have any favorites, go to the Candidates page to add some!
+                        </text>
+                    </div>
+                    <div style={{ alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'absolute', top: '55%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                        <text style={{ fontSize: 50, fontWeight: '400', color: 'gray' }}>
+                            (╯°□°)╯︵ ┻━┻
+                        </text>
+                    </div>
+                </div>
+            </ThemeProvider>
+        </div>
     )
 }
 
