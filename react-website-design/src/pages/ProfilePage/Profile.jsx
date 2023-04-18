@@ -11,9 +11,7 @@ export default function Profile() {
   const [district_number, setDistrictNumber] = useState(user.district_number);
   const [email, setEmail] = useState(user.email);
   const [phone_number, setPhoneNumber] = useState(user.phone_number);
-  const [party_name, setPartyName] = useState(partyIDs.find((partyID) => {
-    return partyID.ID === user.party_ID
-  })?.party_name);
+  const [party_name, setPartyName] = useState(partyIDs[user.party_ID]);
 
   const editProfile = () => {
     document.getElementById("editProfile").style.display = "none";
@@ -54,9 +52,32 @@ export default function Profile() {
     document.getElementById("partyID").style.display = "block";
     document.getElementById("dropdown").style.display = "none";
 
-    const party_ID = partyIDs.find((partyID) => {
-      return partyID.party_name === party_name
-    }).ID;
+    var party_id = 0;
+    switch (party_name) {
+      case "Republican":
+        party_id = 1;
+        break;
+      case "Democrat":
+        party_id = 2;
+        break;
+      case "Libertarian":
+        party_id = 3;
+        break;
+      case "Green":
+        party_id = 4;
+        break;
+      case "Forward":
+        party_id = 5;
+        break;
+      case "Independent":
+        party_id = 9;
+        break;
+      case "Illuminati":
+        party_id = 99;
+        break;
+      default: 
+        party_id = 0;
+    }
 
     setSessionState("user", {
       "ID": user.ID,
@@ -64,22 +85,22 @@ export default function Profile() {
       "last_name": user.last_name,
       "SSN": user.SSN,
       "DOB": user.DOB,
-      "email": email,
-      "phone_number": phone_number,
-      "party_ID": party_ID,
-      "district_number": district_number,
-      "state": state
+      "email": document.getElementById("email").innerText,
+      "phone_number": document.getElementById("phoneNumber").innerText,
+      "party_ID":  party_id,
+      "district_number": document.getElementById("districtNumber").innerText,
+      "state": document.getElementById("state").innerText
     });
 
     const res = await axios.post("http://localhost:8080/voter/update", {
       "ID": user.ID,
-      "email": email,
-      "phone_number": phone_number,
-      "party_ID": party_ID,
-      "district_number": district_number,
-      "state": state
+      "email": document.getElementById("email").innerText,
+      "phone_number": document.getElementById("phoneNumber").innerText,
+      "party_ID":  party_id,
+      "district_number": document.getElementById("districtNumber").innerText,
+      "state": document.getElementById("state").innerText
     });
-
+    
     console.log(res);
   }
 
@@ -176,24 +197,24 @@ export default function Profile() {
                       <MDBCol size="6" className="mb-4">
                         <MDBTypography tag="h6">Party Affiliation</MDBTypography>
                         <div id="partyID">
-                          <MDBCardText className="text-muted">{party_name ? party_name : "N/A"}</MDBCardText>
+                          <MDBCardText className="text-muted">{party_name}</MDBCardText>
                         </div>
                         <MDBDropdown id="dropdown" style={{ position: "fixed", display: "none" }}>
                           <MDBDropdownToggle className="btn btn-dark dropdown-toggle" style={{ height: "40px", width: "180px" }}>{party_name}</MDBDropdownToggle>
                           <MDBDropdownMenu>
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[0].party_name)}>{partyIDs[0].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[1])}>{partyIDs[1]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[1].party_name)}>{partyIDs[1].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[2])}>{partyIDs[2]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[2].party_name)}>{partyIDs[2].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[3])}>{partyIDs[3]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[3].party_name)}>{partyIDs[3].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[4])}>{partyIDs[4]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[4].party_name)}>{partyIDs[4].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[5])}>{partyIDs[5]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[5].party_name)}>{partyIDs[5].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[9])}>{partyIDs[9]}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[6].party_name)}>{partyIDs[6].party_name}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[99])}>{partyIDs[99]}</MDBDropdownItem>
                           </MDBDropdownMenu>
                         </MDBDropdown>
                       </MDBCol>

@@ -28,6 +28,7 @@ export default function Login() {
     const handleRegisterClick = (e) => {
         e.preventDefault();
         setSessionState("isRegistering", true);
+        window.location.reload();
     }
 
     return (
