@@ -19,7 +19,6 @@ function Favorites() {
         },
     });
 
-    // Global variables for maintaining candidate data and to render cards
     const [candidateData, setFavorites] = useState([]);
     const [favorites, setIcon] = useState([]);
     const [cards, setCards] = useState(null);
@@ -40,10 +39,9 @@ function Favorites() {
         getFavorites();
     }, []);
 
-    // Function to render favorites cards
     function showFavoritesCard(candidateData, favorites) {
         return (
-            <Grid container spacing={10} justifyContent="center" className={'candidate-cards'}>
+            <Grid container spacing={10} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
                         <CandidateCard candidateData={candidate} favorites={favorites} />
@@ -53,7 +51,6 @@ function Favorites() {
         );
     }
 
-    //Ensures cards are not lost after page refresh
     useEffect(() => {
         setCards(showFavoritesCard(candidateData, favorites));
     }, [candidateData, favorites]);

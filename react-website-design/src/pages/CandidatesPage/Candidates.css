@@ -22,23 +22,5 @@ html, body {
 }
 
 .details td {
-    padding-left: 10px;
+    padding-left: 15px;
 }
-
-/* .card {
-    padding: 20px;
-    margin-bottom: 3px;
-    margin-top: 3px;
-} */
-
-.buttons:hover {
-    box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
-}
-
-/* .candidateImg {
-    border: 5px solid rgb(255, 85, 85);
-} 
-
-darkCard color = #2b3036
-*/
-  
