@@ -24,6 +24,7 @@ function ElectionCandidates() {
     const user = getSessionState("user");
     const [searchparams] = useSearchParams();
     const ID = searchparams.get("id");
+    const office = searchparams.get("office");
     const [favorites, setFavorites] = useState([]);
 
     async function getFavorites() {
@@ -71,13 +72,15 @@ function ElectionCandidates() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div className="Candidates">
+            <div className="Candidates" style={{ backgroundColor: '#f4f5f7' }}>
                 <div>
-                    <h1 style={{ textAlign: 'center' }}>Election Candidates</h1>
+                    <h1 style={{ textAlign: 'center' }}>{office} Candidates</h1>
                 </div>
                 <br></br>
-                <div className="card-container">
-                    {cards}
+                <div className='grids' style={{ backgroundColor: '#f4f5f7' }}>
+                    <div className="card-container">
+                        {cards}
+                    </div>
                 </div>
             </div>
         </ThemeProvider>

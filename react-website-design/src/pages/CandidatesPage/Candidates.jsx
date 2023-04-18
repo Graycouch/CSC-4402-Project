@@ -33,7 +33,7 @@ function Candidates() {
         catch (error) {
             console.log(error);
         }
-      }
+    }
 
     /* Don't know how to properly use database functions */
     async function getCandidates() {
@@ -72,15 +72,15 @@ function Candidates() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div className="Candidates">
+            <div className="Candidates" style={{ backgroundColor: '#f4f5f7' }}>
                 <div>
                     <h1 style={{ textAlign: 'center' }}>Candidates</h1>
                 </div>
                 <br></br>
-                <div className='grids'>
-                <div className="card-container" >
-                    {cards}
-                </div>
+                <div className='grids' style={{ backgroundColor: '#f4f5f7' }}>
+                    <div className="card-container" >
+                        {cards}
+                    </div>
                 </div>
             </div>
         </ThemeProvider>

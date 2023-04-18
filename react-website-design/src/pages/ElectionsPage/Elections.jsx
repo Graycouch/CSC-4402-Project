@@ -55,7 +55,7 @@ export default function Elections() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div className="Elections">
+            <div className="Elections" style={{ backgroundColor: '#f4f5f7' }}>
                 <div>
                     <h1 style={{ textAlign: 'center' }}>Elections</h1>
                 </div>

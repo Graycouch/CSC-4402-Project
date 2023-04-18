@@ -24,7 +24,7 @@ export default function ElectionCard(electionData) {
   const onSeeCandidatesClick = () => {
     navigate({
       pathname: '/electioncandidates',
-      search: createSearchParams({ id: ID }).toString()
+      search: createSearchParams({ id: ID, office: office }).toString()
     });
   };
 

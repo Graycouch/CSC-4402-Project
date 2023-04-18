@@ -57,13 +57,15 @@ function Favorites() {
 
     return favorites.length > 0 ? (
         <ThemeProvider theme={theme}>
-            <div className="Candidates">
+            <div className="Candidates" style={{ backgroundColor: '#f4f5f7' }}>
                 <div>
                     <h1 style={{ textAlign: 'center' }}>Favorites</h1>
                 </div>
                 <br></br>
-                <div className="card-container">
-                    {cards}
+                <div className='grids' style={{ backgroundColor: '#f4f5f7' }}>
+                    <div className="card-container">
+                        {cards}
+                    </div>
                 </div>
             </div>
         </ThemeProvider>
