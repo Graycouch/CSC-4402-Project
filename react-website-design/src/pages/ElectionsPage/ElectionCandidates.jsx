@@ -33,12 +33,22 @@ function ElectionCandidates() {
     const user = getSessionState("user");
     const [searchparams] = useSearchParams();
     const ID = searchparams.get("id");
-    /* Don't know how to properly use database functions */
+    const [favorites, setFavorites] = useState([]);
+
     async function getCandidates() {
         try {
             const res = await axios.get(`http://localhost:8080/election/get-candidates/${ID}`);
             setCandidates(res.data);
-            console.log(candidateData);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function getFavorites() {
+        try {
+            const res = await axios.get(`http://localhost:8080/favorites/get/${user.ID}`);
+            setFavorites(res.data);
         }
         catch (error) {
             console.log(error);
@@ -46,16 +56,17 @@ function ElectionCandidates() {
     }
 
     useEffect(() => {
+        getFavorites();
         getCandidates();
     }, []);
 
     // Function to render cards
-    function showCandidateCards(candidateData) {
+    function showCandidateCards(candidateData, favorites) {
         return (
             <Grid container spacing={12} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
-                        <CandidateCard candidateData={candidate} />
+                        <CandidateCard candidateData={candidate} favorites={favorites} />
                     </Grid>
                 ))}
             </Grid>
@@ -64,8 +75,8 @@ function ElectionCandidates() {
 
     //Ensures cards are not lost after page refresh
     useEffect(() => {
-        setCards(showCandidateCards(candidateData));
-    }, [candidateData]);
+        setCards(showCandidateCards(candidateData, favorites));
+    }, [candidateData, favorites]);
 
     return (
         <ThemeProvider theme={theme}>

@@ -22,7 +22,7 @@ export default function ElectionCard(electionData) {
   const [candidates] = useState(electionData.candidates);
 
   const navigate = useNavigate();
-  const someEventHandler = (id) => {
+  const someEventHandler = () => {
     navigate({
       pathname: '/electioncandidates',
       search: createSearchParams({ id: ID }).toString()
