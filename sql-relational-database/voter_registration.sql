@@ -3,8 +3,8 @@ CREATE DATABASE voter_registration;
 USE voter_registration;
 
 CREATE TABLE party(
-ID VARCHAR(20),
-party_name VARCHAR(20),
+ID VARCHAR(5),
+party_name VARCHAR(50),
 PRIMARY KEY (ID)
 );
 
