@@ -12,13 +12,15 @@ export default function CandidateCard(candidateData) {
   candidateData = candidateData.candidateData;
 
   const partyNames = {
-    1: "Republican",
-    2: "Democrat",
-    3: "Libertarian",
-    4: "Green",
-    5: "Forward",
-    9: "Independent",
-    99: "Illuminati"
+    "R": "Republican",
+    "D": "Democrat",
+    "LIB": "Libertarian",
+    "GRE": "Green",
+    "FWD": "Forward",
+    "IND": "Independent",
+    "PRO": "Progressive",
+    "SUS": "Socialist Party USA",
+    "ILL": "Illuminati"
   };
 
   const [candidate] = useState(candidateData.first_name + " " + candidateData.last_name);
@@ -124,7 +126,7 @@ export default function CandidateCard(candidateData) {
       />
       <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" style={{ bottom: -20, left: '35%' }} onClick={handleElectionClick}>Vote Now</Button>
+        <Button variant="contained" style={{ bottom: -20, width: '160px', left: '30%'}} onClick={handleElectionClick}>View Elections</Button>
       </Typography>
     </Box>
   );

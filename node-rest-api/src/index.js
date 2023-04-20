@@ -7,8 +7,8 @@ const electionRoute = require("./Routes/election");
 const favoritesRoute = require("./Routes/favorites");
 const partyRoute = require("./Routes/party");
 const runningForRoute = require("./Routes/running_for");
+const voteRoute = require("./Routes/vote");
 const voterRoute = require("./Routes/voter");
-const votesInRoute = require("./Routes/votes_in");
 
 // Middleware
 app.use(express.json());
@@ -19,8 +19,8 @@ app.use("/election", electionRoute);
 app.use("/favorites", favoritesRoute);
 app.use("/party", partyRoute);
 app.use("/running-for", runningForRoute);
+app.use("/vote", voteRoute);
 app.use("/voter", voterRoute);
-app.use("/votes-in", votesInRoute);
 
 app.listen(8080,
     () => {

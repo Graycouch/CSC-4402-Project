@@ -15,11 +15,13 @@ export const clearSessionState = () => {
 };
 
 setSessionState('partyIDs', {
-  1: "Republican",
-  2: "Democrat",
-  3: "Libertarian",
-  4: "Green",
-  5: "Forward",
-  9: "Independent",
-  99: "Illuminati"
+  "R": "Republican",
+  "D": "Democrat",
+  "LIB": "Libertarian",
+  "GRE": "Green",
+  "FWD": "Forward",
+  "IND": "Independent",
+  "PRO": "Progressive",
+  "SUS": "Socialist Party USA",
+  "ILL": "Illuminati"
 })

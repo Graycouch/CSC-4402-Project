@@ -102,7 +102,6 @@ INSERT INTO running_for VALUES ('635', '1');
 INSERT INTO running_for VALUES ('723', '1');
 INSERT INTO running_for VALUES ('245', '1');
 INSERT INTO running_for VALUES ('835', '1');
-INSERT INTO running_for VALUES ('068', '1');
 INSERT INTO running_for VALUES ('274', '1');
 INSERT INTO running_for VALUES ('999', '2');
 INSERT INTO running_for VALUES ('835', '2');
@@ -111,9 +110,6 @@ INSERT INTO running_for VALUES ('635', '4');
 INSERT INTO running_for VALUES ('723', '4');
 INSERT INTO running_for VALUES ('537', '5');
 INSERT INTO running_for VALUES ('245', '5');
-
-
-
 
 CREATE TABLE vote(
 vote_ID VARCHAR(20) NOT NULL, -- Unique ID of the vote (not the voter) 
@@ -142,7 +138,6 @@ INSERT INTO vote VALUES ('016', '1', '274');
 INSERT INTO vote VALUES ('017', '1', '274');
 INSERT INTO vote VALUES ('018', '1', '999');
 INSERT INTO vote VALUES ('019', '1', '999');
-
 
 CREATE TABLE favorites(
 voter_ID VARCHAR(20) NOT NULL,

@@ -55,25 +55,31 @@ export default function Profile() {
     var party_id = 0;
     switch (party_name) {
       case "Republican":
-        party_id = 1;
+        party_id = 'R';
         break;
       case "Democrat":
-        party_id = 2;
+        party_id = 'D';
         break;
       case "Libertarian":
-        party_id = 3;
+        party_id = 'LIB';
         break;
       case "Green":
-        party_id = 4;
+        party_id = 'GRE';
         break;
       case "Forward":
-        party_id = 5;
+        party_id = 'FWD';
         break;
       case "Independent":
-        party_id = 9;
+        party_id = 'IND';
+        break;
+      case "Progressive":
+        party_id = 'PRO';
+        break;
+      case "Socialist Party USA":
+        party_id = 'SUS';
         break;
       case "Illuminati":
-        party_id = 99;
+        party_id = "ILL";
         break;
       default: 
         party_id = 0;
@@ -202,19 +208,23 @@ export default function Profile() {
                         <MDBDropdown id="dropdown" style={{ position: "fixed", display: "none" }}>
                           <MDBDropdownToggle className="btn btn-dark dropdown-toggle" style={{ height: "40px", width: "180px" }}>{party_name}</MDBDropdownToggle>
                           <MDBDropdownMenu>
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[1])}>{partyIDs[1]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['R'])}>{partyIDs['R']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[2])}>{partyIDs[2]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['D'])}>{partyIDs['D']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[3])}>{partyIDs[3]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['LIB'])}>{partyIDs['LIB']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[4])}>{partyIDs[4]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['GRE'])}>{partyIDs['GRE']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[5])}>{partyIDs[5]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['FWD'])}>{partyIDs['FWD']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[9])}>{partyIDs[9]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['IND'])}>{partyIDs['IND']}</MDBDropdownItem>
                             <hr className="mt-0" />
-                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs[99])}>{partyIDs[99]}</MDBDropdownItem>
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['PRO'])}>{partyIDs['PRO']}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['SUS'])}>{partyIDs['SUS']}</MDBDropdownItem>
+                            <hr className="mt-0" />
+                            <MDBDropdownItem style={{ height: "40px", width: "180px" }} link onClick={() => setPartyName(partyIDs['ILL'])}>{partyIDs['ILL']}</MDBDropdownItem>
                           </MDBDropdownMenu>
                         </MDBDropdown>
                       </MDBCol>

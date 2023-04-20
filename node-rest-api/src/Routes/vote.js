@@ -2,7 +2,7 @@ const database = require('../database-connection');
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-    let query = "SELECT * FROM votes_in ORDER BY election_ID";
+    let query = "SELECT * FROM vote ORDER BY election_ID";
 
     database.query(query, function (error, data) {
         res.header("Access-Control-Allow-Origin", "*");
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 router.post("/create", async (req, res) => {
     if (req.body.voter_ID !== undefined && req.body.election_ID !== undefined && req.body.candidate_ID !== undefined) {
-        let query = `INSERT INTO votes_in VALUES (${req.body.voter_ID}, ${req.body.election_ID}, ${req.body.candidate_ID})`;
+        let query = `INSERT INTO vote VALUES (${req.body.voter_ID}, ${req.body.election_ID}, ${req.body.candidate_ID})`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
@@ -35,7 +35,7 @@ router.post("/create", async (req, res) => {
 
 router.delete("/delete", async (req, res) => {
     if (req.body.voter_ID !== undefined && req.body.election_ID !== undefined && req.body.candidate_ID !== undefined) {
-        let query = `DELETE FROM votes_in WHERE voter_ID = ${req.body.voter_ID} && election_ID = ${req.body.election_ID} && candidate_ID = ${req.body.candidate_ID}`;
+        let query = `DELETE FROM vote WHERE voter_ID = ${req.body.voter_ID} && election_ID = ${req.body.election_ID} && candidate_ID = ${req.body.candidate_ID}`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
