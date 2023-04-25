@@ -11,11 +11,12 @@ export default function Elections() {
     const theme = createTheme({
         palette: {
             primary: {
-                main: blue[500],
+                main: '#f44336',
             },
-            secondary: {
-                main: red[500],
-            },
+        },
+        typography: {
+            fontFamily: 'Bison, sans-serif',
+            fontWeightBold: 700,
         },
     });
 
@@ -60,8 +61,10 @@ export default function Elections() {
                     <h1 style={{ textAlign: 'center' }}>Elections</h1>
                 </div>
                 <br></br>
-                <div className="card-container">
-                    {cards}
+                <div className='grids' style={{ backgroundColor: '#f4f5f7' }}>
+                    <div className="card-container" >
+                        {cards}
+                    </div>
                 </div>
             </div>
         </ThemeProvider>

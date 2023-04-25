@@ -1,13 +1,8 @@
 import { getSessionState, setSessionState } from '../../globalValues';
 import { useState } from "react";
 import { Routes, Route, useNavigate, createSearchParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import axios from 'axios';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Card, CardContent, CardMedia, Modal, Typography, Box, Button, CardActions } from "@mui/material";
+import { Markup } from 'interweave';
 import './Elections.css';
 
 export default function ElectionCard(electionData) {
@@ -17,8 +12,8 @@ export default function ElectionCard(electionData) {
   const [office] = useState(electionData.office);
   const [election_date] = useState(electionData.election_date);
   const [winner] = useState(electionData.winner);
-  const [description] = useState(electionData.description);
-  const [candidates] = useState(electionData.candidates);
+  const [description] = useState(electionData.office_description);
+  const [img] = useState('/Images/'+ 'Specimen-947' + '.png');
 
   const navigate = useNavigate();
   const onSeeCandidatesClick = () => {
@@ -29,25 +24,28 @@ export default function ElectionCard(electionData) {
   };
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+   <div>
+    <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#2b3036' }}>
+    <CardMedia 
+          className="ElectionImg"
+          component="img"
+          height="300"
+          width="200"
+          image={img}
+          alt="Election Image"
+        />
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      <Typography variant="h5" component="div" color="whitesmoke" textAlign="center">
           {office}
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" color="whitesmoke" textAlign="center">
           {election_date}
         </Typography>
-        <Typography variant="h5" component="div">
-          {description}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {candidates}
-        </Typography>
+        <Markup className="description" color="whitesmoke" content={description} />
       </CardContent>
-      <CardActions>
-        <Button variant='outlined' size="small" onClick={onSeeCandidatesClick}>See Candidates</Button>
-      </CardActions>
+      <Button variant="contained" className="button" style={{ border: '1px solid #f00', right: '2%' }} onClick={onSeeCandidatesClick}>See Candidates</Button>
     </Card>
+    </div>
   );
 
 };
