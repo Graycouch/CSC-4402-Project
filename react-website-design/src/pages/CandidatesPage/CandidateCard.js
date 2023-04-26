@@ -161,12 +161,12 @@ export default function CandidateCard(candidateData) {
         height="400"
         width="200"
         image={img}
-        alt="Candidate Image"
+        alt="Candidate Image" 
         sx={{ mb: 2 }}
       />
       <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" style={{ bottom: -20, width: '160px', left: '38%' }} onClick={handleElectionClick}>{pageType === "Election" ? "Vote Now" : "View Elections"}</Button>
+        <Button variant="contained" style={{ bottom: -20, width: '160px', left: '36%' }} onClick={handleElectionClick}>{pageType === "Election" ? "Vote Now" : "View Elections"}</Button>
       </Typography>
     </Box>
   );
