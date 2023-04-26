@@ -55,7 +55,7 @@ router.get("/get-votes/:id", async (req, res) => {
     if (!req.params.id) {
         res.status(400).send("You need to provide an ID for the election you want to get!");
     } else {
-        let query = `SELECT candidate.ID, candidate.first_name, candidate.last_name, count(ID) AS '# of Votes' FROM candidate INNER JOIN votes_in ON candidate.ID = votes_in.candidate_ID where votes_in.election_ID = ${req.params.id} GROUP BY ID`;
+        let query = `SELECT candidate.ID, candidate.first_name, candidate.last_name, count(ID) AS 'numVotes' FROM candidate INNER JOIN vote ON candidate.ID = vote.candidate_ID where vote.election_ID = ${req.params.id} GROUP BY ID`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");

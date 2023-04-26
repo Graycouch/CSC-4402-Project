@@ -72,6 +72,7 @@ INSERT INTO candidate VALUES ('245', 'Ashley', 'Jakobs', '272-25-4854', '12/21/1
 INSERT INTO candidate VALUES ('835', 'Brice', 'Samuel', '724-25-2346', '08/30/1983', 'brice@gmail.com', '745-542-7245', 'FWD', 16, 'Louisiana', 'Thinker', 'We should fix the system', 'I have a plan', 'You can count on me', 'Do not worry', 'Let us figure it out together', 'Let us solve the issues');
 INSERT INTO candidate VALUES ('068', 'Phillip', 'Burns', '613-74-2343', '11/31/1963', 'phil@gmail.com', '184-782-2842', 'PRO', 3, 'Louisiana', 'Architect', 'Protect the right to choose', 'Guns are scary', 'We are here to help', 'We are powerful', 'Metal straws and more', 'Check out my podcast');
 INSERT INTO candidate VALUES ('274', 'Abigail', 'Has', '634-12-9364', '07/29/1972', 'abi@gmail.com', '225-462-2463', 'SUS', 8, 'Louisiana', 'Political Pundit', 'Free for all, men and women', 'Do we really need them', 'All are welcome', 'Protect human rights', 'Companies are culpable', 'The allegations are true, I do have a house');
+INSERT INTO candidate VALUES ('236', 'Arrogant', 'Goat', '232-32-3232', '01/24/2023', 'arrogant_goat@gmail.com', '504-493-1415', 'IND', 3, 'Louisiana', 'GOAT', 'Baaaaaaaaaa', 'Baa Baa Baa', 'BAAAAAAAAAAAAAAAAA', 'Meow?', '༼⁠ ⁠つ⁠ ⁠◕⁠‿⁠◕⁠ ⁠༽⁠つ', 'My fellow brothers and sisters, we must unite to take down our enslavers and fight back to win back our God-given rights BAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
 CREATE TABLE election(
 ID VARCHAR(20) NOT NULL,
@@ -84,7 +85,7 @@ PRIMARY KEY (ID)
 
 INSERT INTO election VALUES ('1', 'President', 'President of the United States of America. Executive branch. Commander in Chief.', '05/19/2023', null);
 INSERT INTO election VALUES ('2', 'Secretary', 'Secretary to the POTUS', '05/19/2023', null);
-INSERT INTO election VALUES ('3', 'Puppet Master', '//Make sure to hide this in the database', '05/19/1980', '947');
+INSERT INTO election VALUES ('3', 'Puppet Master', 'Make sure to hide this in the database', '05/19/1980', '947');
 INSERT INTO election VALUES ('4', 'House Representative', 'Member of the federal US House of Representatives representing Louisiana district 3.', '05/19/2023', null);
 INSERT INTO election VALUES ('5', 'Senate Representative', 'Member of the federal US Senate representing Louisiana district 3.', '05/19/2023', null);
 
@@ -167,4 +168,4 @@ INSERT INTO favorites VALUES ('2642113', '537');
 -- SELECT first_name, last_name FROM candidate INNER JOIN running_for ON candidate.ID = running_for.candidate_ID where running_for.election_ID = 1;
 
 -- How many votes each candidate got in an election
--- SELECT candidate.ID, candidate.first_name, candidate.last_name, count(ID) AS '# of Votes' FROM candidate INNER JOIN vote ON candidate.ID = vote.candidate_ID where vote.election_ID = 1 GROUP BY ID;
+-- SELECT candidate.ID, candidate.first_name, candidate.last_name, count(ID) AS 'numVotes' FROM candidate INNER JOIN vote ON candidate.ID = vote.candidate_ID where vote.election_ID = 1 GROUP BY ID;

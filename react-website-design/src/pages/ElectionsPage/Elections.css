@@ -17,7 +17,6 @@ html, body {
 .description {
     text-align: left;
     font-size: 1rem;
-    color: whitesmoke;
 }
 
 .details td {
@@ -36,7 +35,4 @@ html, body {
     bottom:0%px;
     left:3%;
     margin-left:-50px;
-}
-.button:hover {
-    box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
 }

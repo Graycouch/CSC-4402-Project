@@ -9,6 +9,8 @@ import './Candidates.css';
 
 export default function CandidateCard(candidateData) {
   let favorites = candidateData.favorites;
+  let pageType = candidateData.pageType;
+  let electionID = candidateData.electionID;
   candidateData = candidateData.candidateData;
 
   const partyNames = {
@@ -29,6 +31,7 @@ export default function CandidateCard(candidateData) {
   const [img] = useState('/Images/' + candidateData.first_name + '-' + candidateData.last_name + '.png');
   const [open, setOpen] = useState(false);
   const [favoriteClicked, setFavoriteClicked] = useState(false);
+  const [numVotes, setNumVotes] = useState(0);
   const user = getSessionState("user");
 
   const [bio] = useState(
@@ -55,6 +58,7 @@ export default function CandidateCard(candidateData) {
 
   useEffect(() => {
     getFavorites();
+    getNumVotes();
   }, []);
 
   async function getFavorites() {
@@ -72,6 +76,20 @@ export default function CandidateCard(candidateData) {
         document.getElementById("favorite" + candidateData.ID).style.display = "none";
         document.getElementById("favoriteBorder" + candidateData.ID).style.display = "block";
       }
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getNumVotes() {
+    try {
+      await axios.get(`http://localhost:8080/election/get-votes/${electionID}`).then(response => {
+        let numVotesData = response.data.find((candidate) => {
+          return candidate.ID === candidateData.ID
+        });
+        setNumVotes(numVotesData.numVotes);
+      });
     }
     catch (error) {
       console.log(error);
@@ -108,17 +126,39 @@ export default function CandidateCard(candidateData) {
     setOpen(false);
   };
 
-  const handleElectionClick = () => {
-    window.location.href = "/elections";
+  const handleElectionClick = async () => {
+    if (pageType === "Election") {
+      var d = new Date();
+      var seconds = Math.round(d.getTime() / 1000);
+
+      await axios.post('http://localhost:8080/vote/create', {
+        vote_ID: seconds,
+        election_ID: electionID,
+        candidate_ID: candidateData.ID
+      });
+
+      console.log(`Vote with voted_ID = ${seconds} was created successfully!`);
+      setNumVotes(numVotes + 1);
+    } else {
+      window.location.href = "/elections";
+    }
   };
 
   const modalContent = (
-    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: '#2b3036', boxShadow: 24, p: 4, overflowY: 'auto' }}>
+    <Box sx={{ position: 'absolute', borderRadius: '10px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: '#2b3036', boxShadow: 24, p: 4, overflowY: 'auto', width: '600px' }}>
+      {pageType === "Election" ? (
+        <Typography variant="h5" component="p" color="whitesmoke" style={{ paddingBottom: "20px" }}>
+          {"Total Votes: " + numVotes}
+        </Typography>
+      ) : (
+        <div />
+      )
+      }
       <Typography variant="h4" color="whitesmoke" >{candidate}</Typography>
       <Typography variant="h6" color="whitesmoke" gutterBottom>{party}</Typography>
       <CardMedia className="candidateImg"
         component="img"
-        height="300"
+        height="400"
         width="200"
         image={img}
         alt="Candidate Image"
@@ -126,7 +166,7 @@ export default function CandidateCard(candidateData) {
       />
       <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
         <Markup className="details" content={details} />
-        <Button variant="contained" style={{ bottom: -20, width: '160px', left: '30%'}} onClick={handleElectionClick}>View Elections</Button>
+        <Button variant="contained" style={{ bottom: -20, width: '160px', left: '38%' }} onClick={handleElectionClick}>{pageType === "Election" ? "Vote Now" : "View Elections"}</Button>
       </Typography>
     </Box>
   );
@@ -134,7 +174,7 @@ export default function CandidateCard(candidateData) {
   return (
     <div>
       <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#2b3036' }}>
-        <CardMedia 
+        <CardMedia
           className="candidateImg"
           component="img"
           height="400"

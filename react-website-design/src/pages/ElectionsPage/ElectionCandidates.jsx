@@ -58,7 +58,7 @@ function ElectionCandidates() {
             <Grid container spacing={12} className={'candidate-cards'}>
                 {candidateData.map((candidate) => (
                     <Grid item xs={12} sm={6} md={4} key={candidate.ID}>
-                        <CandidateCard candidateData={candidate} favorites={favorites} />
+                        <CandidateCard candidateData={candidate} favorites={favorites} pageType={"Election"} electionID={ID} />
                     </Grid>
                 ))}
             </Grid>

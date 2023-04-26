@@ -13,7 +13,7 @@ export default function ElectionCard(electionData) {
   const [election_date] = useState(electionData.election_date);
   const [winner] = useState(electionData.winner);
   const [description] = useState(electionData.office_description);
-  const [img] = useState('/Images/'+ 'Specimen-947' + '.png');
+  const [img] = useState('/Images/'+ office.split(" ")[0] + '.jpg');
 
   const navigate = useNavigate();
   const onSeeCandidatesClick = () => {
@@ -25,7 +25,7 @@ export default function ElectionCard(electionData) {
 
   return (
    <div>
-    <Card className="card" sx={{ width: '350px', height: '600px', backgroundColor: '#2b3036' }}>
+    <Card className="card" sx={{ width: '350px', height: '530px', backgroundColor: '#FFFFFF' }}>
     <CardMedia 
           className="ElectionImg"
           component="img"
@@ -35,15 +35,16 @@ export default function ElectionCard(electionData) {
           alt="Election Image"
         />
       <CardContent>
-      <Typography variant="h5" component="div" color="whitesmoke" textAlign="center">
+      <Typography variant="h5" component="div" color="black" textAlign="center">
           {office}
         </Typography>
-        <Typography variant="h5" component="div" color="whitesmoke" textAlign="center">
+        <Typography variant="p3" component="div" color="black" textAlign="center">
           {election_date}
         </Typography>
-        <Markup className="description" color="whitesmoke" content={description} />
+        <div style={{paddingTop: '10px'}} />
+        <Markup className="description" color="black" content={description} />
       </CardContent>
-      <Button variant="contained" className="button" style={{ border: '1px solid #f00', right: '2%' }} onClick={onSeeCandidatesClick}>See Candidates</Button>
+      <Button variant="outlined" className="button" style={{ right: '2%', position: 'absolute', bottom: '5%' }} onClick={onSeeCandidatesClick}>See Candidates</Button>
     </Card>
     </div>
   );

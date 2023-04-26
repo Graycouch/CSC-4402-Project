@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-    if (req.body.voter_ID !== undefined && req.body.election_ID !== undefined && req.body.candidate_ID !== undefined) {
-        let query = `INSERT INTO vote VALUES (${req.body.voter_ID}, ${req.body.election_ID}, ${req.body.candidate_ID})`;
+    if (req.body.vote_ID !== undefined && req.body.election_ID !== undefined && req.body.candidate_ID !== undefined) {
+        let query = `INSERT INTO vote VALUES (${req.body.vote_ID}, ${req.body.election_ID}, ${req.body.candidate_ID})`;
 
         database.query(query, function (error, data) {
             res.header("Access-Control-Allow-Origin", "*");
