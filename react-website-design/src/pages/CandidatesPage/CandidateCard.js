@@ -58,7 +58,10 @@ export default function CandidateCard(candidateData) {
 
   useEffect(() => {
     getFavorites();
-    getNumVotes();
+
+    if (pageType === "Election") {
+      getNumVotes();
+    }
   }, []);
 
   async function getFavorites() {
@@ -161,7 +164,7 @@ export default function CandidateCard(candidateData) {
         height="400"
         width="200"
         image={img}
-        alt="Candidate Image" 
+        alt="Candidate Image"
         sx={{ mb: 2 }}
       />
       <Typography variant="body1" color="whitesmoke" sx={{ mb: 2 }}>
